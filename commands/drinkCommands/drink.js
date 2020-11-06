@@ -10,6 +10,7 @@ module.exports = {
     maxArgs: -1,
 
     run: async (message, args) => {
+        
         const id = message.guild.id;
         const results = await drinkSchema.findOne({
             _id: id
@@ -34,6 +35,8 @@ module.exports = {
                 let target = message.mentions.users.first();
 
                 message.channel.send(`${target},\n${sender} has purchased you a random drink! Here is your ${reply[tempNum]}!`);
+            } else {
+                message.reply(`The bartender has searched his collection and found the perfect drink for you! Here is your ${reply[tempNum]}!`);
             }
         } else {
             message.reply(`The bartender has searched his collection and found the perfect drink for you! Here is your ${reply[tempNum]}!`);

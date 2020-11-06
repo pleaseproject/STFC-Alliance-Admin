@@ -33,6 +33,8 @@ module.exports = {
                     let target = message.mentions.users.first();
 
                     message.channel.send(`${target},\n${sender} has purchased you a ${beer}!`);
+                } else {
+                    message.reply(`Your ${beer} has been delivered!`);
                 }
             } else {
                 message.reply(`Your ${beer} has been delivered!`);
