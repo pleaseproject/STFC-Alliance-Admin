@@ -38,6 +38,7 @@ module.exports = {
             } = status
 
             let embedStatus = new Discord.MessageEmbed()
+                .setAuthor(`Executed By: ${message.author.username}`, message.author.avatarURL())
                 .setTitle('Alliance Status:')
                 .setDescription(`Below is the returned Status with alliance **[${allianceTag}]**`)
                 .addFields({
@@ -57,6 +58,7 @@ module.exports = {
                     value: `${new Date(lastUpdated).toLocaleDateString()}`
                 })
                 .setColor('BLUE')
+                .setTimestamp(Date.now())
 
             reply.push(embedStatus);
         }
