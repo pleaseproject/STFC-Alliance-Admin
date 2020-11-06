@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const embed = require('../embed');
+const embed = require('../../embed');
 
 module.exports = {
 
