@@ -13,10 +13,7 @@ module.exports = {
         let pollDescription = args.slice(1).join(' ');
 
         let embedPoll = new Discord.MessageEmbed()
-            .setAuthor({
-                name: message.author.username,
-                icon_url: message.author.avatarURL()
-            })
+            .setAuthor(message.author.username, message.author.avatarURL())
 
             .setTitle('**New Poll**')
             .setDescription(pollDescription)
