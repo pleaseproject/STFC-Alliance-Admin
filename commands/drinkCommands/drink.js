@@ -4,6 +4,7 @@ const drinkSchema = require('../../schemas/drinkSchema.js');
 module.exports = {
 
     name: 'drink',
+    aliases: ['drinkme', ],
     description: 'Responds random drink in database',
     minArgs: 0,
     maxArgs: -1,
