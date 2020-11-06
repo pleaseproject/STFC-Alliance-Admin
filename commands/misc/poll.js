@@ -13,6 +13,11 @@ module.exports = {
         let pollDescription = args.slice(1).join(' ');
 
         let embedPoll = new Discord.MessageEmbed()
+            .setAuthor({
+                name: message.author.username,
+                icon_url: message.author.avatarURL()
+            })
+
             .setTitle('**New Poll**')
             .setDescription(pollDescription)
             .setColor('RED')
