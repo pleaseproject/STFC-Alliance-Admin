@@ -18,7 +18,7 @@ module.exports = {
             .setDescription(pollDescription)
             .setColor('RED')
             .setTimestamp(Date.now())
-            .setFooter(message.author.bot)
+            .setFooter(message.author.bot.username, message.author.bot.avatarURL())
         let msgEmbed = await pollChannel.send(embedPoll);
         await msgEmbed.react('👍')
         await msgEmbed.react('👎')
