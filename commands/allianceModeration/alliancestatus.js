@@ -9,13 +9,10 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
 
-    run: async (message, args, text) => {
+    run: async (message, args) => {
 
         const guildId = message.guild.id;
         const allianceId = args[0].toLowerCase();
-
-        let embedPoll = new Discord.MessageEmbed()
-
         const results = await allianceSchema.findOne({
             guildId,
             allianceId,
