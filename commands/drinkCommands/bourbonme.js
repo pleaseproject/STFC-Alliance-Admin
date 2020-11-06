@@ -25,12 +25,14 @@ module.exports = {
 
         let bourbon = reply.find(element => element.includes(":bourbon:"));
         if (bourbon != null) {
-            let mentionTest = args[0].indexOf('@');
-            if (args.length > 0 && mentionTest > 0) {
-                let sender = message.author.username;
-                let target = message.mentions.users.first();
+            if(args.length > 0){
+                let mentionTest = args[0].indexOf('@');
+                if (mentionTest > 0) {
+                    let sender = message.author.username;
+                    let target = message.mentions.users.first();
 
-                message.channel.send(`${target},\n${sender} has purchased you a ${bourbon}!`);
+                    message.channel.send(`${target},\n${sender} has purchased you a ${bourbon}!`);
+                }
             } else {
                 message.reply(`Your ${bourbon} has been delivered!`);
             }

@@ -26,12 +26,14 @@ module.exports = {
 
         let beer = reply.find(element => element.includes(":beer:"));
         if (beer != null) {
-            let mentionTest = args[0].indexOf('@');
-            if (args.length > 0 && mentionTest > 0) {
-                let sender = message.author.username;
-                let target = message.mentions.users.first();
+            if(args.length > 0){
+                let mentionTest = args[0].indexOf('@');
+                if (mentionTest > 0) {
+                    let sender = message.author.username;
+                    let target = message.mentions.users.first();
 
-                message.channel.send(`${target},\n${sender} has purchased you a ${beer}!`);
+                    message.channel.send(`${target},\n${sender} has purchased you a ${beer}!`);
+                }
             } else {
                 message.reply(`Your ${beer} has been delivered!`);
             }
