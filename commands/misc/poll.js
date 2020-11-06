@@ -14,10 +14,11 @@ module.exports = {
 
         let embedPoll = new Discord.MessageEmbed()
             .setAuthor(`Executed By: ${message.author.username}`, message.author.avatarURL())
-
             .setTitle('**New Poll**')
             .setDescription(pollDescription)
             .setColor('RED')
+            .setTimestamp(Date.now())
+            .setFooter(message.author.bot)
         let msgEmbed = await pollChannel.send(embedPoll);
         await msgEmbed.react('👍')
         await msgEmbed.react('👎')
