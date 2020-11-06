@@ -21,7 +21,7 @@ module.exports = {
         await msgEmbed.react('👍')
         await msgEmbed.react('👎')
 
-        message.reply(embed)
+        message.reply(embed.embed)
 
     }
 
