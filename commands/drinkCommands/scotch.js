@@ -25,7 +25,7 @@ module.exports = {
         }
 
         let scotch = reply.find(element => element.includes(":scotch:"));
-        if (beer != null) {
+        if (scotch != null) {
             if(args.length > 0){
                 let mentionTest = args[0].indexOf('@');
                 if (mentionTest > 0) {
