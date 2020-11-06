@@ -1,8 +1,6 @@
 const DiscordJS = require('discord.js');
 const WOKCommands = require('wokcommands');
 require('dotenv').config();
-
-// Will revisit mongo connection as it may already be connected.
 const mongo = require('./mongo');
 
 const client = new DiscordJS.Client();
