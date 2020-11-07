@@ -1,4 +1,3 @@
-const mongo = require('../../mongo');
 const allianceSchema = require('../../schemas/allianceSchema');
 const Discord = require('discord.js');
 

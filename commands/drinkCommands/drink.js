@@ -1,4 +1,3 @@
-const mongo = require('../../mongo');
 const drinkSchema = require('../../schemas/drinkSchema.js');
 
 function mentionChecker(mention) {

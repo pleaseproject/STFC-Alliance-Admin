@@ -1,4 +1,3 @@
-const mongo = require('../../mongo');
 const drinkSchema = require('../../schemas/allianceSchema.js');
 
 module.exports = {

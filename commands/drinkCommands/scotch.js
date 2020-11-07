@@ -1,4 +1,3 @@
-const mongo = require('../../mongo');
 const drinkSchema = require('../../schemas/drinkSchema.js');
 
 module.exports = {
@@ -27,8 +26,7 @@ module.exports = {
         let scotch = reply.find(element => element.includes(":scotch:"));
         if (scotch != null) {
             if(args.length > 0){
-                let mentionTest = args[0].indexOf('@');
-                if (mentionTest > 0) {
+                if(mentionChecker(args[0])) {
                     let sender = message.author.username;
                     let target = message.mentions.users.first();
 
