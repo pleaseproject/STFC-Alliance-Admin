@@ -4,9 +4,8 @@ function mentionChecker(mention) {
     let matches = mention.match('/^<@!?(\d+)>$/');
 
     if(!matches) return;
-    console.log(matches);
-    console.log(mention);
-    return true;
+
+    if(matches.lengtch > 0) return true;
 
 }
 
