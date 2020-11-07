@@ -28,14 +28,15 @@ module.exports = {
             if(args.length > 0){
                 let mentionTest = args[0].indexOf('@');
                 let roleMentionTest = args[0].indexOf('&');
-                if (mentionTest > 0) {
-                    console.log(roleMentionTest)
+                if (mentionTest > 0 && roleMentionTest < 0) {
                     let sender = message.author.username;
-                    let target = message.mentions.users.first();
-
-                    message.channel.send(`${target},\n${sender} has purchased you a ${beer}!`);
+                    let targetUser = message.mentions.users.first();
+                    let targetRole = message.mentions.users.first().id;
+                    message.channel.send(`${targetUser},\n${sender} has purchased you a ${beer}!`);
+                } else if(mentionTest > 0 && roleMentionTest > 0) {
+                    message.channel.send(``)
                 } else {
-                    message.reply(`Your ${beer} has been delivered!`);
+                    message.channel.send(`<@&${targetRole}>'s,\n${sender} has purchased you a ${beer}!`);
                 }
             } else {
                 message.reply(`Your ${beer} has been delivered!`);
