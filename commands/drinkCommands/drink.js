@@ -1,6 +1,17 @@
 const mongo = require('../../mongo');
 const drinkSchema = require('../../schemas/drinkSchema.js');
 
+function mentionChecker(mention) {
+    let matches = mention.match('/^<@!?(\d+)>$/');
+
+    if(mention) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 module.exports = {
 
     name: 'drink',
@@ -29,8 +40,7 @@ module.exports = {
 
         var tempNum = Math.floor(Math.random() * reply.length);
         if(args.length > 0){
-            let mentionTest = args[0].indexOf('@');
-            if (mentionTest > 0) {
+            if (mentionChecker(args[0])) {
                 let sender = message.author.username;
                 let target = message.mentions.users.first();
 
