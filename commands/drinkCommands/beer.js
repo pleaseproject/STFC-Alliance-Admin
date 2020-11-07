@@ -28,7 +28,7 @@ module.exports = {
             if(args.length > 0){
                 let mentionTest = args[0].indexOf('@');
                 let roleMentionTest = args[0].indexOf('&');
-                if (mentionTest > 0 && roleMentionTest == null) {
+                if (mentionTest > 0 && !roleMentionTest) {
                     let sender = message.author.username;
                     let target = message.mentions.users.first();
 
