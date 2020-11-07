@@ -34,9 +34,9 @@ module.exports = {
                     let targetRole = message.mentions.users.first().id;
                     message.channel.send(`${targetUser},\n${sender} has purchased you a ${beer}!`);
                 } else if(mentionTest > 0 && roleMentionTest > 0) {
-                    message.channel.send(``)
-                } else {
                     message.channel.send(`<@&${targetRole}>'s,\n${sender} has purchased you a ${beer}!`);
+                } else {
+                    message.reply(`Your ${beer} has been delivered!`);
                 }
             } else {
                 message.reply(`Your ${beer} has been delivered!`);
