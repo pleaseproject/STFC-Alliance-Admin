@@ -3,11 +3,10 @@ const drinkSchema = require('../../schemas/drinkSchema.js');
 function mentionChecker(mention) {
     let matches = mention.match('/^<@!?(\d+)>$/');
 
-    if(matches) {
-        return true;
-    } else {
-        return false;
-    }
+    if(!matches) return;
+    console.log(matches);
+    console.log(mention);
+    return true;
 
 }
 
