@@ -1,15 +1,15 @@
 const drinkSchema = require('../../schemas/drinkSchema.js');
 
-function mentionChecker(mention) {
-    let matches = mention.match('/^<@!?(\d+)>$/');
+// function mentionChecker(mention) {
+//     let matches = mention.match('/^<@!?(\d+)>$/');
 
-    if(matches) {
-        return true;
-    } else {
-        return false;
-    }
+//     if(matches) {
+//         return true;
+//     } else {
+//         return false;
+//     }
 
-}
+// }
 
 module.exports = {
 
@@ -37,7 +37,8 @@ module.exports = {
         let bourbon = reply.find(element => element.includes(":bourbon:"));
         if (bourbon != null) {
             if(args.length > 0){
-                if(mentionChecker(args[0])) {
+                let mentionTest = args[0].indexOf('@');
+                if (mentionTest > 0) {
                     let sender = message.author.username;
                     let target = message.mentions.users.first();
 
