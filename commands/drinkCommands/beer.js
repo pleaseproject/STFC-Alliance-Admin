@@ -5,7 +5,7 @@ function mentionChecker(mention) {
 
     if(!matches) return;
 
-    if(matches.lengtch > 0) return true;
+    if(matches.length > 0) return true;
 
 }
 
