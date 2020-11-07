@@ -4,7 +4,7 @@ const drinkSchema = require('../../schemas/drinkSchema.js');
 function mentionChecker(mention) {
     let matches = mention.match('/^<@!?(\d+)>$/');
 
-    if(mention) {
+    if(matches) {
         return true;
     } else {
         return false;
@@ -40,7 +40,7 @@ module.exports = {
 
         var tempNum = Math.floor(Math.random() * reply.length);
         if(args.length > 0){
-            if (mentionChecker(args[0])) {
+            if(mentionChecker(args[0])) {
                 let sender = message.author.username;
                 let target = message.mentions.users.first();
 
