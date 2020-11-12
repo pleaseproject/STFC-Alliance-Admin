@@ -2,7 +2,7 @@ module.exports = {
 
     name: 'simleave',
     description: 'Tests',
-    minArgs: 1,
+    minArgs: 0,
     maxArgs: 1,
 
     run: (message) => {
