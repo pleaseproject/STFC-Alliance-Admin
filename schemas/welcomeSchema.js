@@ -5,7 +5,7 @@ const reqString = {
     required: true,
 }
 
-const profilesSchema = mongoose.Schema({
+const welcomeSchema = mongoose.Schema({
     guildId: Number,
     channelId: Number,
 })

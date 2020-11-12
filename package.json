@@ -1,16 +1,10 @@
 {
   "name": "STFC-Alliance-Admin",
-
   "description": "Discord bot created to keep track of standings with alliances. Also added fun commands.",
-
   "version": "1.0.0",
-
   "main": "index.js",
-
   "scripts": {
-
     "start": "node index.js"
-
   },
   "dependencies": {
     "axios": "^0.21.0",
