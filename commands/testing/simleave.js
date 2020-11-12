@@ -5,9 +5,9 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
 
-    run: (message) => {
+    run: (message, client) => {
 
-        this.client.emit('guildMemberLeave', message.member)
+        client.emit('guildMemberLeave', message.member)
 
     }
 
