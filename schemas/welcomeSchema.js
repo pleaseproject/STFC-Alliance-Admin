@@ -1,13 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const reqString = {
-    type: String,
-    required: true,
+  type: String,
+  required: true,
 }
 
-const welcomeSchema = mongoose.Schema({
-    guildId: Number,
-    channelId: Number,
+const welcomeSchema = new mongoose.Schema({
+  // Guild ID
+  _id: reqString,
+  channelId: reqString,
 })
-  
-  module.exports = mongoose.model('welcome', welcomeSchema)
+
+module.exports = mongoose.model('welcome-channel', welcomeSchema)
