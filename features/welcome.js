@@ -17,7 +17,7 @@ module.exports = (client) => {
       return
     }
 
-    const canvas = Canvas.createCanvas(500, 281)
+    const canvas = Canvas.createCanvas(700, 394)
     const ctx = canvas.getContext('2d')
 
     const background = await Canvas.loadImage(
