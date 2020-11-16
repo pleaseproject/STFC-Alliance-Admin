@@ -42,7 +42,7 @@ module.exports = (client) => {
 	ctx.closePath();
 	// Clip off the region you drew on
 	ctx.clip();
-    ctx.drawImage(pfp, x, y, 90, 90)
+    ctx.drawImage(pfp, x, y, 120, 120)
 
     ctx.fillStyle = '#ffffff'
     ctx.font = '35px sans-serif'
