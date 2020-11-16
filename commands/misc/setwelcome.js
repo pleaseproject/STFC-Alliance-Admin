@@ -7,7 +7,7 @@ const loadData = async () => {
   const results = await welcomeSchema.find()
 
   for (const result of results) {
-    cache.set(result.guildId, result.channelId)
+    cache.set(result._id, result.channelId)
   }
 }
 loadData()
@@ -19,10 +19,10 @@ module.exports = {
 
     await welcomeSchema.findOneAndUpdate(
       {
-        guildId: guild.id,
+        _id: guild.id,
       },
       {
-        guildId: guild.id,
+        _id: guild.id,
         channelId: channel.id,
       },
       {
