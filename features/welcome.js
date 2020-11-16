@@ -37,7 +37,7 @@ module.exports = (client) => {
     // Pick up the pen
 	ctx.beginPath();
 	// Start the arc to form a circle
-	ctx.arc(27, 27, 27, 0, Math.PI * 2, true);
+	ctx.arc(125, 125, 80, 0, Math.PI * 2, true);
 	// Put the pen down
 	ctx.closePath();
 	// Clip off the region you drew on
