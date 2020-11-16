@@ -37,12 +37,12 @@ module.exports = (client) => {
     // Pick up the pen
 	ctx.beginPath();
 	// Start the arc to form a circle
-	ctx.arc(150, 115, 200, 0, Math.PI * 2, true);
+	ctx.arc(100, 100, 100, 0, Math.PI * 2, true);
 	// Put the pen down
 	ctx.closePath();
 	// Clip off the region you drew on
 	ctx.clip();
-    ctx.drawImage(pfp, x, y, 120, 120)
+    ctx.drawImage(pfp, x, y, 100, 100)
 
     ctx.fillStyle = '#ffffff'
     ctx.font = '35px sans-serif'
