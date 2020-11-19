@@ -21,7 +21,7 @@ module.exports = {
             if (d.acknowledged && d.deletedCount == 1) {
                 message.reply(`${allianceId} has been removed from the database!`);
             } else {
-                message.send(`There was an error trying to delete ${allianceId} from the database. This may be because ${allianceId} is not in the database. If you are unsure please use the \`\`!alliancelist\`\` command!`);
+                message.channel.send(`There was an error trying to delete ${allianceId} from the database. This may be because ${allianceId} is not in the database. If you are unsure please use the \`\`!alliancelist\`\` command!`);
             }
         })
 
