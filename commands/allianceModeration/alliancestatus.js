@@ -17,6 +17,12 @@ module.exports = {
             allianceId,
         })
 
+        if (!results) {
+            console.log(`no such alliance`);
+            message.reply(`There is no such alliance as **\`\`${args[0]}\`\`** in the database!`);
+            return;
+        }
+
         let reply = [];
 
         for (const status of results.allianceStatus) {
