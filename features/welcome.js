@@ -36,7 +36,7 @@ module.exports = (client) => {
     y = 25
     // Pick up the pen
 	ctx.beginPath();
-	ctx.arc(160, 125, 100, 0, Math.PI * 2, true);
+	ctx.arc(80, 63, 100, 0, Math.PI * 2, true);
 	ctx.closePath();
 	ctx.clip();
     ctx.drawImage(pfp, x, y, 200, 200)
