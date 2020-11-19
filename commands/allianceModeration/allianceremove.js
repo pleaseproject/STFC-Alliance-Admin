@@ -16,11 +16,12 @@ module.exports = {
         await allianceSchema.deleteOne({
             guildId: guildId,
             allianceId: allianceId,
-        }, function (err) {
-            if (err) {
-                return message.send(`There was an error trying to delete ${allianceId} from the database. This may be because ${allianceId} is not in the database. If you are unsure please use the \`\`!alliancelist\`\` command!`);
-            } else {
+        }, function (err, d) {
+            if (err) return res.status(400)
+            if (d.acknowledged && d.deletedCount == 1) {
                 message.reply(`${allianceId} has been removed from the database!`);
+            } else {
+                message.send(`There was an error trying to delete ${allianceId} from the database. This may be because ${allianceId} is not in the database. If you are unsure please use the \`\`!alliancelist\`\` command!`);
             }
         })
 
