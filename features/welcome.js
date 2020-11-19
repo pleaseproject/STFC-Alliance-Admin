@@ -36,24 +36,21 @@ module.exports = (client) => {
     y = 25
     // Pick up the pen
 	ctx.beginPath();
-	// Start the arc to form a circle
-	ctx.arc(50, 47, 90, 0, Math.PI * 2, true);
-	// Put the pen down
+	ctx.arc(160, 125, 100, 0, Math.PI * 2, true);
 	ctx.closePath();
-	// Clip off the region you drew on
 	ctx.clip();
-    ctx.drawImage(pfp, x, y)
+    ctx.drawImage(pfp, x, y, 200, 200)
 
-    ctx.fillStyle = '#ffffff'
-    ctx.font = '35px sans-serif'
-    let text = `Welcome ${member.user.tag}`
-    x = canvas.width / 2 - ctx.measureText(text).width / 2
-    ctx.fillText(text, x, 60 + pfp.height)
+    // ctx.fillStyle = '#ffffff'
+    // ctx.font = '35px sans-serif'
+    // let text = `Welcome ${member.user.tag}`
+    // x = canvas.width / 2 - ctx.measureText(text).width / 2
+    // ctx.fillText(text, x, 60 + pfp.height)
 
-    ctx.font = '30px sans-serif'
-    text = `Member #${guild.memberCount}`
-    x = canvas.width / 2 - ctx.measureText(text).width / 2
-    ctx.fillText(text, x, 100 + pfp.height)
+    // ctx.font = '30px sans-serif'
+    // text = `Member #${guild.memberCount}`
+    // x = canvas.width / 2 - ctx.measureText(text).width / 2
+    // ctx.fillText(text, x, 100 + pfp.height)
 
     const attachment = new MessageAttachment(canvas.toBuffer())
     channel.send('Welcome To The Server!', attachment)
