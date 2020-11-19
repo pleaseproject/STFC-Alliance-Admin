@@ -39,7 +39,7 @@ module.exports = (client) => {
 	ctx.arc(160, 125, 100, 0, Math.PI * 2, true);
 	ctx.closePath();
 	ctx.clip();
-    ctx.drawImage(pfp, x, y, 100, 100)
+    ctx.drawImage(pfp, x, y, 200, 200, x, y, 100, 100)
 
     // ctx.fillStyle = '#ffffff'
     // ctx.font = '35px sans-serif'
