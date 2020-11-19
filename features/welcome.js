@@ -36,10 +36,10 @@ module.exports = (client) => {
     y = 25
     // Pick up the pen
 	ctx.beginPath();
-	ctx.arc(160, 125, 50, 0, Math.PI * 2, true);
+	ctx.arc(160, 125, 100, 0, Math.PI * 2, true);
 	ctx.closePath();
 	ctx.clip();
-    ctx.drawImage(pfp, x, y, 100, 100)
+    ctx.drawImage(pfp, x, y, 200, 200)
 
     // ctx.fillStyle = '#ffffff'
     // ctx.font = '35px sans-serif'
