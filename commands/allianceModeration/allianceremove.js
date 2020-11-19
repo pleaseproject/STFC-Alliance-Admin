@@ -19,7 +19,7 @@ module.exports = {
         })
 
         if (results.n === 0) {
-            message.channel.send(`There was an error trying to delete ${allianceId} from the database. This may be because ${allianceId} is not in the database. If you are unsure please use the \`\`!alliancelist\`\` command!`);
+            message.channel.send(`There was an error trying to delete \`\`${allianceId}\`\` from the database. This may be because ${allianceId} is not in the database. If you are unsure please use the \`\`!alliancelist\`\` command!`);
         } else {
             message.reply(`${allianceId} has been removed from the database!`);
         }
