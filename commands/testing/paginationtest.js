@@ -1,3 +1,4 @@
+const allianceSchema = require('../../schemas/allianceSchema');
 const Discord = require('discord.js');
 
 module.exports = {
@@ -10,19 +11,35 @@ module.exports = {
 
     run: (message) => {
 
-        const guilds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+        const guildId = message.guild.id;
+        const results = await allianceSchema.findOne({
+            guildId,
+        })
+
+        if (!results) {
+            console.log(`no such alliance`);
+            message.reply(`There was an error running this command. Please speak with the server Admin!`);
+            return;
+        }
+
+        for (const statusList of results.allianceStatus) {
+            const {
+                allianceTag,
+                allianceStatus,
+                lastUpdated
+            } = statusList
 
         /**
          * Creates an embed with guilds starting from an index.
          * @param {number} start The index to start from.
          */
         const generateEmbed = start => {
-        const current = guilds.slice(start, start + 10)
+        const current = statusList.slice(start, start + 10)
 
         // you can of course customise this embed however you want
         const embed = new Discord.MessageEmbed()
-            .setTitle(`Showing guilds ${start + 1}-${start + current.length} out of ${guilds.length}`)
-        current.forEach(g => embed.addField(g, `Test`))
+            .setTitle(`Showing guilds ${start + 1}-${start + current.length} out of ${statusList.length}`)
+        current.forEach(g => embed.addField(g.allianceTag, `Test`))
         return embed
         }
 
