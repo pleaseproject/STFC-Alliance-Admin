@@ -29,6 +29,8 @@ module.exports = {
                 lastUpdated
             } = statusList
 
+        }
+
         /**
          * Creates an embed with guilds starting from an index.
          * @param {number} start The index to start from.
