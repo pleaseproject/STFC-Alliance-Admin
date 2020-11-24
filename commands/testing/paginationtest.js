@@ -31,7 +31,7 @@ module.exports = {
         current.forEach(alliance => embed.addFields(
             {name: `Alliance:`, value: alliance.allianceId, inline: true},
             {name: `Status:`, value: `Status`, inline: true},
-            {name: `Last Updated:`, value: `LastUpdated`, inline: true},
+            {name: `Last Updated:`, value: `LastUpdated`, inline: true}
             ))
         return embed
         }
