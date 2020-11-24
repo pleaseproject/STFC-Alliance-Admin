@@ -11,29 +11,6 @@ module.exports = {
 
     run: (message) => {
 
-        const guildId = message.guild.id;
-        const results = await allianceSchema.findOne({
-            guildId,
-        })
-
-        if (!results) {
-            console.log(`no such alliance`);
-            message.reply(`There was an error running this command. Please speak with the server Admin!`);
-            return;
-        }
-
-        let reply = [];
-
-        for (const statusList of results.allianceStatus) {
-            const {
-                allianceTag,
-                allianceStatus,
-                lastUpdated
-            } = statusList
-
-        }
-
-
         const guilds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
         /**
