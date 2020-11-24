@@ -9,7 +9,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
 
-    run: (message) => {
+    run: async (message) => {
 
         const results = await allianceSchema.find({
             guildId,
