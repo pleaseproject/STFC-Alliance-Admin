@@ -22,6 +22,8 @@ module.exports = {
             return;
         }
 
+        let reply = [];
+
         for (const statusList of results.allianceStatus) {
             const {
                 allianceTag,
@@ -31,17 +33,20 @@ module.exports = {
 
         }
 
+
+        const guilds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
         /**
          * Creates an embed with guilds starting from an index.
          * @param {number} start The index to start from.
          */
         const generateEmbed = start => {
-        const current = statusList.slice(start, start + 10)
+        const current = guilds.slice(start, start + 10)
 
         // you can of course customise this embed however you want
         const embed = new Discord.MessageEmbed()
-            .setTitle(`Showing guilds ${start + 1}-${start + current.length} out of ${statusList.length}`)
-        current.forEach(g => embed.addField(g.allianceTag, `Test`))
+            .setTitle(`Showing guilds ${start + 1}-${start + current.length} out of ${guilds.length}`)
+        current.forEach(g => embed.addField(g, `Test`))
         return embed
         }
 
