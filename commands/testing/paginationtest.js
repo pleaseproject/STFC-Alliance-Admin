@@ -11,11 +11,12 @@ module.exports = {
 
     run: async (message) => {
 
+        const guildId = message.guild.id;
         const results = await allianceSchema.find({
             guildId,
         })
 
-        const allianceList = reults;
+        const allianceList = results;
 
         /**
          * Creates an embed with guilds starting from an index.
