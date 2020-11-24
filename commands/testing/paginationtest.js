@@ -30,7 +30,7 @@ module.exports = {
             .setTitle(`Showing guilds ${start + 1}-${start + current.length} out of ${allianceList.length}`)
         current.forEach(alliance => embed.addFields(
             {
-                name: ``,
+                name: `test`,
                 value: 
                 `-------------------------------\n
                 Alliance:    Status:    Last Updated:\n
