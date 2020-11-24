@@ -28,10 +28,15 @@ module.exports = {
         // you can of course customise this embed however you want
         const embed = new Discord.MessageEmbed()
             .setTitle(`Showing guilds ${start + 1}-${start + current.length} out of ${allianceList.length}`)
+            .addFields(
+                {name: `Alliance:`, inline: true},
+                {name: `Status:`, inline: true},
+                {name: `Last Updated:`, inline: true}
+            )
         current.forEach(alliance => embed.addFields(
-            {name: `Alliance:`, value: alliance.allianceId, inline: true},
-            {name: `Status:`, value: alliance.allianceId, inline: true},
-            {name: `Last Updated:`, value: alliance.allianceId, inline: true},
+            {value: alliance.allianceId, inline: true},
+            {value: alliance.allianceId, inline: true},
+            {value: alliance.allianceId, inline: true},
             ))
         return embed
         }
