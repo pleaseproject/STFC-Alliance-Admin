@@ -12,9 +12,9 @@ client.on('ready', async () => {
 
     new WOKCommands(client, 'commands', 'features')
         .setMongoPath(process.env.MONGO_URI)
+        .setSyntaxError('Incorrect syntax! Please use {PREFIX}{COMMAND} {ARGUMENTS}')
         .setDisplayName('STFCAA Commands')
         .setCategoryEmoji('Alliance', '🔫')
-        .setSyntaxError('Incorrect syntax! Please use {PREFIX}{COMMAND} {ARGUMENTS}')
         .setCategoryEmoji('Drink', '🍺')
         //.setCategoryEmoji('Fun', '🎮')
         //.setCategoryEmoji('Util', '💻')
