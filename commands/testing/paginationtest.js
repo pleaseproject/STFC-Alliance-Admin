@@ -59,7 +59,8 @@ module.exports = {
             // only collect left and right arrow reactions from the message author
             (reaction, user) => ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === author.id,
             // time out after a minute
-            {time: 60000}
+            //{time: 60000}
+            message.delete(60000)
         )
 
         let currentIndex = 0
