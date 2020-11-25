@@ -16,6 +16,7 @@ module.exports = {
     name: 'bourbon',
     aliases: ['bourbonme', ],
     description: 'Responds with a bourbon delivery to requesting user or targeted user.',
+    category: 'Drink',
     minArgs: 0,
     maxArgs: -1,
 

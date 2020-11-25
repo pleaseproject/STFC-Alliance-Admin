@@ -4,6 +4,7 @@ module.exports = {
 
     name: 'poll',
     description: 'Creates a poll in mentioned channel.',
+    category: 'Util',
     minArgs: 1,
     maxArgs: -1,
 

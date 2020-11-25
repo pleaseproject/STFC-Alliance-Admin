@@ -5,6 +5,7 @@ module.exports = {
     name: 'alliancehistory',
     aliases: ['statushistory', 'statush', 'history', ],
     description: 'Returns all history of an alliance',
+    category: 'Alliance',
     minArgs: 1,
     maxArgs: 1,
 

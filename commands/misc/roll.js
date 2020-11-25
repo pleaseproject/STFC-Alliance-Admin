@@ -1,6 +1,7 @@
 module.exports = {
     name: 'roll',
     description: 'Rolls a random number between 1 and 100 by default unless specificed by the user.',
+    category: 'Fun',
     minArgs: 0,
     maxArgs: 1,
 

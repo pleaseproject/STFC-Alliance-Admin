@@ -6,6 +6,7 @@ module.exports = {
     name: 'pt',
     description: 'Tests Pagination Embed Message',
     requiredPermissions: ['ADMINISTRATOR'],
+    category: 'Admin Testing',
     minArgs: 0,
     maxArgs: 0,
 

@@ -2,6 +2,7 @@ module.exports = {
     name: 'nickname',
     aliases: ['tag', ],
     description: 'Responds with a beer delivery to requesting user or targeted user.',
+    category: 'Util',
     minArgs: 1,
     maxArgs: 2,
 

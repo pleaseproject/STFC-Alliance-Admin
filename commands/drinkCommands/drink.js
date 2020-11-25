@@ -5,6 +5,7 @@ module.exports = {
     name: 'drink',
     aliases: ['drinkme', ],
     description: 'Responds random drink in database',
+    category: 'Drink',
     minArgs: 0,
     maxArgs: -1,
 

@@ -5,6 +5,7 @@ module.exports = {
     name: 'drinklist',
     aliases: ['listdrink', 'drinkl', 'dl', ],
     description: 'Returns list of drinks in database',
+    category: 'Drink',
     minArgs: 0,
     maxArgs: 0,
 

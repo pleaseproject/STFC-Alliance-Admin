@@ -5,6 +5,7 @@ module.exports = {
     name: 'alliancestatus',
     aliases: ['status', ],
     description: 'Returns most current status of specified alliance to the user.',
+    category: 'Alliance',
     minArgs: 1,
     maxArgs: 1,
 

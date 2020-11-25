@@ -14,6 +14,7 @@ loadData()
 
 module.exports = {
   requiredPermissions: ['ADMINISTRATOR'],
+  category: 'Util',
   run: async (message) => {
     const { guild, channel } = message
 
