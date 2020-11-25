@@ -2,10 +2,10 @@ const allianceSchema = require('../../schemas/allianceSchema.js');
 
 module.exports = {
 
+    category: 'Alliance',
     name: 'allianceremove',
     aliases: ['sremove', 'removealliance', 'statusremove', ],
     description: 'Removes specified alliance from the database.',
-    category: 'Alliance',
     minArgs: 1,
     maxArgs: 1,
 

@@ -2,10 +2,11 @@ const allianceSchema = require('../../schemas/allianceSchema');
 const Discord = require('discord.js');
 
 module.exports = {
+
+    category: 'Alliance',
     name: 'alliancestatus',
     aliases: ['status', ],
     description: 'Returns most current status of specified alliance to the user.',
-    category: 'Alliance',
     minArgs: 1,
     maxArgs: 1,
 

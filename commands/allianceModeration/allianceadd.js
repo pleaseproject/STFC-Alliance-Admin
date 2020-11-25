@@ -2,10 +2,10 @@ const drinkSchema = require('../../schemas/allianceSchema.js');
 
 module.exports = {
 
+    category: 'Alliance',
     name: 'allianceadd',
     aliases: ['alliancea', 'sadd', 'adds', 'allianceupdate', 'supdate', 'updates'],
     description: 'Adds new alliance to the database',
-    category: 'Alliance',
     minArgs: 3,
     maxArgs: -1,
 

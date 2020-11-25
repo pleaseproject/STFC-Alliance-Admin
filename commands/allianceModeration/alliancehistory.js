@@ -2,10 +2,11 @@ const allianceSchema = require('../../schemas/allianceSchema');
 const Discord = require('discord.js');
 
 module.exports = {
+
+    category: 'Alliance',
     name: 'alliancehistory',
     aliases: ['statushistory', 'statush', 'history', ],
     description: 'Returns all history of an alliance',
-    category: 'Alliance',
     minArgs: 1,
     maxArgs: 1,
 
