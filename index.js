@@ -13,6 +13,11 @@ client.on('ready', async () => {
     new WOKCommands(client, 'commands', 'features')
         .setMongoPath(process.env.MONGO_URI)
         .setSyntaxError('Incorrect syntax! Please use {PREFIX}{COMMAND} {ARGUMENTS}')
+        .setCategoryEmoji('Alliance', '🔫')
+        .setCategoryEmoji('Drink', '🍺')
+        .setCategoryEmoji('Fun', '🎮')
+        .setCategoryEmoji('Util', '💻')
+        .setCategoryEmoji('Misc', '❓')
 
 });
 
