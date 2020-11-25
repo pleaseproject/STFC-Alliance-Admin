@@ -2,10 +2,10 @@ const drinkSchema = require('../../schemas/drinkSchema.js');
 
 module.exports = {
 
+    category: 'Drink',
     name: 'drinkadd',
     aliases: ['adrink', 'drinka', 'adddrink', ],
     description: 'Adds new drink to the database',
-    category: 'Drink',
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<:Drink Emoji:>",

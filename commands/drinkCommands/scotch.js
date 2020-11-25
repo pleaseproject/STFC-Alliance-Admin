@@ -2,10 +2,10 @@ const drinkSchema = require('../../schemas/drinkSchema.js');
 
 module.exports = {
 
+    category: 'Drink',
     name: 'scotch',
     aliases: ['scotchme', ],
     description: 'Responds with a scotch delivery to requesting user or targeted user.',
-    category: 'Drink',
     minArgs: 0,
     maxArgs: 1,
 

@@ -1,11 +1,11 @@
 const drinkSchema = require('../../schemas/drinkSchema.js');
 
 module.exports = {
-
+    
+    category: 'Drink',
     name: 'drinkremove',
     aliases: ['rdrink', 'drinkr', 'removedrink', ],
     description: 'Removes specified drink from the database.',
-    category: 'Drink',
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<:Drink Emoji:>",
