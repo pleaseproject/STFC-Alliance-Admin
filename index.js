@@ -16,9 +16,9 @@ client.on('ready', async () => {
         .setDisplayName('STFCAA Commands')
         .setCategoryEmoji('Alliance', '🔫')
         .setCategoryEmoji('Drink', '🍺')
-        .setCategoryEmoji('Fun', '🎮')
-        .setCategoryEmoji('Util', '💻')
-        .setCategoryEmoji('Misc', '❓')
+        //.setCategoryEmoji('Fun', '🎮')
+        //.setCategoryEmoji('Util', '💻')
+        //.setCategoryEmoji('Misc', '❓')
 
 });
 
