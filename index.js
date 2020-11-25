@@ -15,7 +15,7 @@ client.on('ready', async () => {
         .setSyntaxError('Incorrect syntax! Please use {PREFIX}{COMMAND} {ARGUMENTS}')
         .setDisplayName('STFCAA Commands')
         .setCategoryEmoji('Alliance', '🔫')
-        .setCategoryEmoji('Drink', '🍺')
+        .setCategoryEmoji('Drink', ':beer:')
         //.setCategoryEmoji('Fun', '🎮')
         //.setCategoryEmoji('Util', '💻')
         //.setCategoryEmoji('Misc', '❓')
