@@ -18,7 +18,10 @@ module.exports = {
               guildId: guildId,
             },
             {
-                channelId: channelId,
+                $push: 
+                {
+                    channelId: channelId,
+                }
             },
             {
               upsert: true,

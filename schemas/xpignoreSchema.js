@@ -8,7 +8,7 @@ const reqString = {
 const xpignoreSchema = new mongoose.Schema({
   // Guild ID
   guildId: reqString,
-  channelId: reqString,
+  channelId: [String],
 })
 
 module.exports = mongoose.model('xp-channel-ignore', xpignoreSchema)
