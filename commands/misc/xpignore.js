@@ -18,7 +18,7 @@ module.exports = {
               guildId: guildId,
             },
             {
-                $push: 
+                $addToSet: 
                 {
                     channelId: channelId,
                 }
