@@ -8,9 +8,10 @@ module.exports = (client) => {
             member
         } = message
         let channel = message.channel.id;
+        let guild = message.guild.id;
         console.log(channel);
         if(message.author.bot) return; // Ignores bot messages
-        if(xpignoreSchema.find({channelId: channel}).count() > 0) return console.log(`This channel is on the XP ignore list.`);
+        if(xpignoreSchema.find({guildId: guild},{channelId: channel}).count() > 0) return console.log(`This channel is on the XP ignore list.`);
         addXP(guild.id, member.id, 23, message)
     })
 }
