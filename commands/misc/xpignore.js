@@ -18,14 +18,13 @@ module.exports = {
               guildId: guildId,
             },
             {
-                guildId: guildId,
                 $setOnInsert:
                 {
                     channelId: channelId,     
-                    // $push: 
-                    // {
-                    //     channelId: channelId,
-                    // } 
+                    $push: 
+                    {
+                        channelId: channelId,
+                    } 
                 }
             },
             {
