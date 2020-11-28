@@ -8,7 +8,7 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
 
-    run: async (message, args) => {
+    run: async (message) => {
 
         const guildId = message.guild.id;
         const channelId = message.mentions.channels.first();
@@ -22,10 +22,10 @@ module.exports = {
                 $setOnInsert:
                 {
                     channelId: channelId,     
-                    $push: 
-                    {
-                        channelId: channelId,
-                    } 
+                    // $push: 
+                    // {
+                    //     channelId: channelId,
+                    // } 
                 }
             },
             {
