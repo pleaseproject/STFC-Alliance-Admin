@@ -1,4 +1,5 @@
 const profilesSchema = require('../schemas/profilesSchema')
+const xpignoreSchema = require('../schemas/xpignoreSchema');
 
 module.exports = (client) => {
     client.on('message', (message) => {
@@ -6,7 +7,10 @@ module.exports = (client) => {
             guild,
             member
         } = message
+        let channel = message.channel.id;
+        console.log(channel);
         if(message.author.bot) return; // Ignores bot messages
+        if(xpignoreSchema.find({channelId: channel}).count() > 0) return console.log(`This channel is on the XP ignore list.`);
         addXP(guild.id, member.id, 23, message)
     })
 }
