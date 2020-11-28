@@ -16,11 +16,13 @@ module.exports = {
         await xpignoreSchema.findOneAndUpdate(
             {
               guildId: guildId,
-              channelId: channelId,
             },
             {
-              guildId: guildId,
-              channelId: channelId,
+                guildId: guildId,
+                $setOnInsert:
+                {
+                    channelId: channelId,      
+                }
             },
             {
               upsert: true,
