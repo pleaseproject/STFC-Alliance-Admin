@@ -11,10 +11,10 @@
     "canvas": "^2.6.1",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.10.11",
+    "mongoose": "^5.10.17",
     "mongoose-auto-increment": "^5.0.1",
     "node.js": "^0.0.1-security",
     "path": "^0.12.7",
-    "wokcommands": "^1.1.1"
+    "wokcommands": "^1.1.3"
   }
 }
