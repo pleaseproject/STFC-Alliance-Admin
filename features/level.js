@@ -19,7 +19,7 @@ module.exports = (client) => {
                 // },
                 channelId: 
                 {
-                    $exists: channel,
+                    $elemMatch: channel,
                 }
             })) {
                 console.log(`This channel is on the XP ignore list.`);
