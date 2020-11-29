@@ -12,19 +12,19 @@ module.exports = (client) => {
         let memberID = message.member.id;
         if (message.author.bot) return; // Ignores bot messages
         // XP Channel Ignore Checker
-        // if (xpignoreSchema.find({
-        //         // guildId : 
-        //         // {
-        //         //     $exists: guildID
-        //         // },
-        //         channelId: 
-        //         {
-        //             $exists: channel,
-        //         }
-        //     })) {
-        //         console.log(`This channel is on the XP ignore list.`);
-        //         return;
-        //     }
+        if (xpignoreSchema.find({
+                // guildId : 
+                // {
+                //     $exists: guildID
+                // },
+                channelId: 
+                {
+                    $exists: channel,
+                }
+            })) {
+                console.log(`This channel is on the XP ignore list.`);
+                return;
+            }
         addXP(guildID, memberID, 23, message)
     })
 }
