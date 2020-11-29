@@ -21,6 +21,7 @@ module.exports = {
                 channelId: channelId,
             }
         }, function(err, doc) {
+            console.log(doc.n);
             if (doc.n > 0) {
                 message.reply(`Channel: ${channelId.name} has been removed from the XP ignore list!`);
             } else {
