@@ -21,8 +21,11 @@ module.exports = (client) => {
                 xpChannelIgnore = true;
             }
         });
-        if (xpChannelIgnore) return;
-        addXP(guildID, memberID, 23, message)
+        if (xpChannelIgnore) {
+            return;
+        } else {
+            addXP(guildID, memberID, 23, message)
+        }
     })
 }
 
