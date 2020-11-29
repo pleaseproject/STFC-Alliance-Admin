@@ -14,10 +14,10 @@ module.exports = (client) => {
         // XP Channel Ignore Checker
         if (xpignoreSchema.find(
             {
-                guildId : 
-                {
-                    $exists: guildID
-                },
+                // guildId : 
+                // {
+                //     $exists: guildID
+                // },
                 channelId: 
                 {
                     $exists: channel,
