@@ -13,14 +13,14 @@ module.exports = (client) => {
         let xpChannelIgnore = false;
         if (message.author.bot) return; // Ignores bot messages
         // XP Channel Ignore Checker
-        xpignoreSchema.findOne({guildId: guildID, channelId: channel}), function (err, doc) {
+        xpignoreSchema.exi({guildId: guildID, channelId: channel}, function (err, doc) {
             if (doc === null) {
                 xpChannelIgnore = false;
             } else {
                 console.log(`This channel is on the XP ignore list.`);
                 xpChannelIgnore = true;
             }
-        }
+        });
         if (xpChannelIgnore) return;
         addXP(guildID, memberID, 23, message)
     })
