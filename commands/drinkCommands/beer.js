@@ -17,7 +17,7 @@ module.exports = {
             _id: id
         }, function(err,doc) {
             if (doc === null) {
-                message.reply(`The drink list on this server is empty please add drinks with the \`\`{PREFIX}drinkadd\`\` command!`);
+                message.reply(`The drink list on this server is empty please add drinks with the \`\`!drinkadd\`\` command!`); // Need to change later to work with muti server prefixes.
                 flagEmptyList = true;
             } else {
                 flagEmptyList = false;
