@@ -9,8 +9,9 @@ module.exports = (client) => {
         } = message
         let channel = message.channel.id;
         let guildID = message.guild.id;
-        console.log(channel);
+        let memberID = message.member.id;
         if (message.author.bot) return; // Ignores bot messages
+        // XP Channel Ignore Checker
         if (xpignoreSchema.find(
             {
                 guildId : 
@@ -22,9 +23,11 @@ module.exports = (client) => {
                     $exists: channel,
                 }
             }
-        )) return console.log(`This channel is on the XP ignore list.`);
-        //if (xpignoreSchema.find({channelId: channel}).count() > 0) return console.log(`This channel is on the XP ignore list.`);
-        addXP(guild.id, member.id, 23, message)
+        )) {
+            console.log(`This channel is on the XP ignore list.`);
+            return;
+        }
+        addXP(guildID, memberID, 23, message)
     })
 }
 
@@ -69,6 +72,7 @@ const addXP = async (guildId, userId, xpToAdd, message) => {
             xp,
         })
     }
+    console.log(`${xpToAdd} Has been added to ${userId}!`);
 }
 
 module.exports.addXP = addXP
