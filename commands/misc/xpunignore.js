@@ -22,9 +22,9 @@ module.exports = {
             }
         }, function(err, doc) {
             if (doc === null) {
-                message.reply(`Channel: ${message.mentions.channels.name.first()} is not an XP ignored channel!`);
+                message.reply(`Channel: ${channelId.name} is not an XP ignored channel!`);
             } else {
-                message.reply(`Channel: ${message.mentions.channels.name.first()} has been removed from the XP ignore list!`);
+                message.reply(`Channel: ${channelId.name} has been removed from the XP ignore list!`);
             }
         });
 
