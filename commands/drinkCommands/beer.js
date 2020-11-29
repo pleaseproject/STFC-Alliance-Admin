@@ -14,7 +14,12 @@ module.exports = {
         const id = message.guild.id;
         const results = await drinkSchema.findOne({
             _id: id
-        })
+        }, function(err,doc) {
+            if (doc === null) {
+                console.log(`Drink list is empty!`);
+                return;    
+            }
+        });
         let reply = []
         let i = 0;
 
@@ -25,8 +30,6 @@ module.exports = {
         }
 
         if (reply === null) {
-            console.log(`Drink list is empty!`);
-            return;
         }
 
         let beer = reply.find(element => element.includes(":beer:"));
