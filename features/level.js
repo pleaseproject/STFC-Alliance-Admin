@@ -13,7 +13,10 @@ module.exports = (client) => {
         if (message.author.bot) return; // Ignores bot messages
         if (xpignoreSchema.find(
             {
-
+                guildId : 
+                {
+                    $exists: guildID
+                },
                 channelId: 
                 {
                     $exists: channel,
