@@ -12,37 +12,45 @@ module.exports = {
     run: async (message, args) => {
         
         const id = message.guild.id;
+        let flagEmptyList = false;
         const results = await drinkSchema.findOne({
             _id: id
-        })
+        }, function(err,doc) {
+            if (doc === null) {
+                message.reply(`The drink list on this server is empty please add drinks with the \`\`!drinkadd\`\` command!`); // Need to change later to work with muti server prefixes.
+                flagEmptyList = true;
+            } else {
+                flagEmptyList = false;
+            }
+        });
+        if (!flagEmptyList) {
+            let reply = []
+            let i = 0;
 
-        let reply = []
-        let i = 0;
+            for (const drinks of results.drink) {
 
-        for (const drinks of results.drink) {
+                console.log('Drink:', drinks);
+                reply[i] = `${drinks}`;
+                i++;
 
-            console.log('Drink:', drinks);
-            reply[i] = `${drinks}`;
-            i++;
+            }
 
-        }
+            var tempNum = Math.floor(Math.random() * reply.length);
+            if(args.length > 0){
+                let mentionTest = args[0].indexOf('@');
+                let roleMentionTest = args[0].indexOf('&');
+                if (mentionTest > 0 && roleMentionTest < 0) {
+                    let sender = message.author.username;
+                    let target = message.mentions.users.first();
 
-        var tempNum = Math.floor(Math.random() * reply.length);
-        if(args.length > 0){
-            let mentionTest = args[0].indexOf('@');
-            let roleMentionTest = args[0].indexOf('&');
-            if (mentionTest > 0 && roleMentionTest < 0) {
-                let sender = message.author.username;
-                let target = message.mentions.users.first();
-
-                message.channel.send(`${target},\n${sender} has purchased you a random drink! Here is your ${reply[tempNum]}!`);
+                    message.channel.send(`${target},\n${sender} has purchased you a random drink! Here is your ${reply[tempNum]}!`);
+                } else {
+                    message.reply(`The bartender has searched his collection and found the perfect drink for you! Here is your ${reply[tempNum]}!`);
+                }
             } else {
                 message.reply(`The bartender has searched his collection and found the perfect drink for you! Here is your ${reply[tempNum]}!`);
             }
-        } else {
-            message.reply(`The bartender has searched his collection and found the perfect drink for you! Here is your ${reply[tempNum]}!`);
         }
-
 
     }
 
