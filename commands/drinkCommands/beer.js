@@ -24,6 +24,11 @@ module.exports = {
             i++;
         }
 
+        if (reply === null) {
+            console.log(`Drink list is empty!`);
+            return;
+        }
+
         let beer = reply.find(element => element.includes(":beer:"));
         if (beer != null) {
             if(args.length > 0){
