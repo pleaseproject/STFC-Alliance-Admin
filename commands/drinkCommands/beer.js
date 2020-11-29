@@ -17,7 +17,7 @@ module.exports = {
             _id: id
         }, function(err,doc) {
             if (doc === null) {
-                console.log(`Drink list is empty!`);
+                message.reply(`The drink list on this server is empty please add drinks with the \`\`${PREFIX}drinkadd\`\` command!`);
                 flagEmptyList = true;
             } else {
                 flagEmptyList = false;
