@@ -10,22 +10,16 @@ module.exports = (client) => {
         let channel = message.channel.id;
         let guildID = message.guild.id;
         let memberID = message.member.id;
-        let xpChannelIgnore = false;
         if (message.author.bot) return; // Ignores bot messages
         // XP Channel Ignore Checker
         xpignoreSchema.findOne({guildId: guildID, channelId: channel}, function (err, doc) {
             if (doc === null) {
-                xpChannelIgnore = false;
+                addXP(guildID, memberID, 23, message)
             } else {
                 console.log(`This channel is on the XP ignore list.`);
-                xpChannelIgnore = true;
+                return;
             }
         });
-        if (xpChannelIgnore) {
-            return;
-        } else {
-            addXP(guildID, memberID, 23, message)
-        }
     })
 }
 
