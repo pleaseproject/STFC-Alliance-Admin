@@ -18,38 +18,40 @@ module.exports = {
             if (doc === null) {
                 console.log(`Drink list is empty!`);
                 return;    
+            } else {
+                let reply = []
+                let i = 0;
+        
+                for (const drinks of results.drink) {
+                    console.log('Drink:', drinks);
+                    reply[i] = `${drinks}`;
+                    i++;
+                }
+        
+                if (reply === null) {
+                }
+        
+                let beer = reply.find(element => element.includes(":beer:"));
+                if (beer != null) {
+                    if(args.length > 0){
+                        let mentionTest = args[0].indexOf('@');
+                        let roleMentionTest = args[0].indexOf('&');
+                        if (mentionTest > 0 && roleMentionTest < 0) {
+                            let sender = message.author.username;
+                            let targetUser = message.mentions.users.first();
+                            message.channel.send(`${targetUser},\n${sender} has purchased you a ${beer}!`);
+                        } else {
+                            message.reply(`Your ${beer} has been delivered!`);
+                        }
+                    } else {
+                        message.reply(`Your ${beer} has been delivered!`);
+                    }
+                } else {
+                    message.reply(`It does not appear that beer has been added to the drink database!`)
+                }
+        
             }
         });
-        let reply = []
-        let i = 0;
-
-        for (const drinks of results.drink) {
-            console.log('Drink:', drinks);
-            reply[i] = `${drinks}`;
-            i++;
-        }
-
-        if (reply === null) {
-        }
-
-        let beer = reply.find(element => element.includes(":beer:"));
-        if (beer != null) {
-            if(args.length > 0){
-                let mentionTest = args[0].indexOf('@');
-                let roleMentionTest = args[0].indexOf('&');
-                if (mentionTest > 0 && roleMentionTest < 0) {
-                    let sender = message.author.username;
-                    let targetUser = message.mentions.users.first();
-                    message.channel.send(`${targetUser},\n${sender} has purchased you a ${beer}!`);
-                } else {
-                    message.reply(`Your ${beer} has been delivered!`);
-                }
-            } else {
-                message.reply(`Your ${beer} has been delivered!`);
-            }
-        } else {
-            message.reply(`It does not appear that beer has been added to the drink database!`)
-        }
 
     }
 
