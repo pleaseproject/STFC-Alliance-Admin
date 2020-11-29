@@ -21,6 +21,7 @@ module.exports = {
                 channelId: channelId,
             }
         }, function(err, doc) {
+            console.log(doc);
             if (doc === null) {
                 message.reply(`Channel: ${channelId.name} is not an XP ignored channel!`);
             } else {
