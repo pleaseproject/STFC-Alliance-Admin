@@ -9,7 +9,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: -1,
 
-    run: async (message, args) => {
+    run: async (message, args, text, client, prefix) => {
         
         const id = message.guild.id;
         let flagEmptyList = false;
@@ -17,7 +17,7 @@ module.exports = {
             _id: id
         }, function(err,doc) {
             if (doc === null) {
-                message.reply(`The drink list on this server is empty please add drinks with the \`\`!drinkadd\`\` command!`); // Need to change later to work with muti server prefixes.
+                message.reply(`The drink list on this server is empty please add drinks with the \`\`${prefix}drinkadd\`\` command!`);
                 flagEmptyList = true;
             } else {
                 flagEmptyList = false;

@@ -1,0 +1,109 @@
+// File to combine all the drink commands into one should i choose to do so.
+const drinkSchema = require('../../schemas/drinkSchema.js');
+
+// function mentionChecker(mention) {
+//     let matches = mention.match('/^<@!?(\d+)>$/');
+
+//     if(matches) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+
+// }
+
+module.exports = {
+
+    category: 'Drink',
+    name: 'bourbon',
+    aliases: ['bourbonme', 'beer', 'beerme', 'scotch', 'scotchme' ],
+    description: 'Responds with a bourbon delivery to requesting user or targeted user.',
+    minArgs: 0,
+    maxArgs: -1,
+
+    run: async (message, args, text, client, prefix) => {
+        
+        const id = message.guild.id;
+        let flagEmptyList = false;
+        const results = await drinkSchema.findOne({
+            _id: id
+        }, function(err,doc) {
+            if (doc === null) {
+                message.reply(`The drink list on this server is empty please add drinks with the \`\`${prefix}drinkadd\`\` command!`);
+                flagEmptyList = true;
+            } else {
+                flagEmptyList = false;
+            }
+        });
+        if (!flagEmptyList) {
+            let reply = []
+            let i = 0;
+
+            for (const drinks of results.drink) {
+                console.log('Drink:', drinks);
+                reply[i] = `${drinks}`;
+                i++;
+            }
+
+            let bourbon = reply.find(element => element.includes(":bourbon:"));
+            let beer = reply.find(element => element.includes(":beer:"));
+            let scotch = reply.find(element => element.includes(":scotch:"));
+            let bourbon = reply.find(element => element.includes(":bourbon:"));
+            let mentionTest = args[0].indexOf('@');
+            let roleMentionTest = args[0].indexOf('&');
+            let sender = message.author.username;
+            let target = message.mentions.users.first();
+
+            if ((message.content.startsWith(`${prefix}bourbon`) || message.content.startsWith(`${prefix}bourbonme`)) && bourbon == null)
+            {
+                message.reply(`It does not appear that bourbon has been added to the drink database!`);
+                return;
+            }
+            else if ((message.content.startsWith(`${prefix}beer`) || message.content.startsWith(`${prefix}beerme`)) && beer == null)
+            {
+                message.reply(`It does not appear that beer has been added to the drink database!`);
+                return;
+            }
+            else if ((message.content.startsWith(`${prefix}scotch`) || message.content.startsWith(`${prefix}scotchme`)) && scotch == null)
+            {
+                message.reply(`It does not appear that scotch has been added to the drink database!`);
+                return;
+            }
+            else 
+            {
+                if(args.length > 0){
+                    if (mentionTest > 0 && roleMentionTest < 0) {
+                        message.channel.send(`${target},\n${sender} has purchased you a ${bourbon}!`);
+                    } else {
+                        message.reply(`Your ${bourbon} has been delivered!`);
+                    }
+                    if (mentionTest > 0 && roleMentionTest < 0) {
+                        message.channel.send(`${target},\n${sender} has purchased you a ${beer}!`);
+                    } else {
+                        message.reply(`Your ${beer} has been delivered!`);
+                    }
+                    if (mentionTest > 0 && roleMentionTest < 0) {
+                        message.channel.send(`${target},\n${sender} has purchased you a ${scotch}!`);
+                    } else {
+                        message.reply(`Your ${scotch} has been delivered!`);
+                    }
+                } else {
+                    if (message.content.startsWith(`${prefix}bourbon`) || message.content.startsWith(`${prefix}bourbonme`)) 
+                    {
+                        message.reply(`Your ${bourbon} has been delivered!`);
+                    }
+                    else if (message.content.startsWith(`${prefix}beer`) || message.content.startsWith(`${prefix}beerme`)) 
+                    {
+                        message.reply(`Your ${beer} has been delivered!`);
+                    }
+                    else if (message.content.startsWith(`${prefix}scotch`) || message.content.startsWith(`${prefix}scotchme`)) 
+                    {
+                        message.reply(`Your ${scotch} has been delivered!`);
+                    }
+                    message.reply(`The bartender has seemed to run into some trouble with delivering your drink!`);
+                }
+            }
+        }
+    }
+
+}

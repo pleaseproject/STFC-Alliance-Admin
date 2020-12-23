@@ -32,6 +32,5 @@ module.exports = {
                 message.channel.send(`${target}, you have been slapped by ${sender}.`)
             }
         }
-
     }
 }

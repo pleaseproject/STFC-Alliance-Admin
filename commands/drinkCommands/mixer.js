@@ -3,11 +3,12 @@ const drinkSchema = require('../../schemas/drinkSchema.js');
 module.exports = {
 
     category: 'Drink',
-    name: 'scotch',
-    aliases: ['scotchme', ],
-    description: 'Responds with a scotch delivery to requesting user or targeted user.',
+    name: 'mixer',
+    aliases: ['mixerme', ],
+    description: 'Responds random drink in database',
     minArgs: 0,
     maxArgs: 1,
+    expectedArgs: "<Target user's @>",
 
     run: async (message, args, text, client, prefix) => {
         
@@ -28,29 +29,26 @@ module.exports = {
             let i = 0;
 
             for (const drinks of results.drink) {
+
                 console.log('Drink:', drinks);
                 reply[i] = `${drinks}`;
                 i++;
+
             }
 
-            let scotch = reply.find(element => element.includes(":scotch:"));
-            if (scotch != null) {
-                if(args.length > 0){
-                    let mentionTest = args[0].indexOf('@');
-                    let roleMentionTest = args[0].indexOf('&');
-                    if (mentionTest > 0 && roleMentionTest < 0) {
-                        let sender = message.author.username;
-                        let target = message.mentions.users.first();
+            if(args.length > 0){
+                let mentionTest = args[0].indexOf('@');
+                let roleMentionTest = args[0].indexOf('&');
+                if (mentionTest > 0 && roleMentionTest < 0) {
+                    let sender = message.author.username;
+                    let target = message.mentions.users.first();
 
-                        message.channel.send(`${target},\n${sender} has purchased you a ${scotch}!`);
-                    } else {
-                        message.reply(`Your ${scotch} has been delivered!`);
-                    }
+                    message.channel.send(`${target},\n${sender} has purchased you a random drink! Here is your ${reply[0]}!`);
                 } else {
-                    message.reply(`Your ${scotch} has been delivered!`);
+                    message.reply(`The bartender has searched his collection and found the perfect drink for you! Here is your ${reply[0]}!`);
                 }
             } else {
-                message.reply(`It does not appear that scotch has been added to the drink database!`)
+                message.reply(`The bartender has searched his collection and found the perfect drink for you! Here is your ${reply[0]}!`);
             }
         }
 
