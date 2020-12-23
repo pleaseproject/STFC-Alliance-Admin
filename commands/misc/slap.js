@@ -11,6 +11,9 @@ module.exports = {
 
         const sender = message.author;
         const target = message.mentions.users.first();
+        console.log(sender);
+        console.log(target);
+        console.log(args[0]);
 
         if (args[0] != target) 
         {

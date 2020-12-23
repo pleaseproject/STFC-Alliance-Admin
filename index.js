@@ -3,7 +3,9 @@ const WOKCommands = require('wokcommands');
 require('dotenv').config();
 const mongo = require('./mongo');
 
-const client = new DiscordJS.Client();
+const client = new DiscordJS.Client({
+    partials: ['MESSAGE', 'REACTION'],
+})
 
 client.on('ready', async () => {
     console.log('READY');
