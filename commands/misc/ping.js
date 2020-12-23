@@ -14,6 +14,4 @@ module.exports = {
         message.reply(`pong`);
 
     }
-
-
 }
