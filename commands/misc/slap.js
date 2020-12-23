@@ -1,7 +1,7 @@
 module.exports = {
     name: 'slap',
-    description: 'Slaps mentioned user to get their attention',
-    aliases: ['ninjakick', 'bodyslammed',],
+    description: 'Performs a violent action against the mentioned user to get their attention',
+    aliases: ['ninjakick', 'bodyslam',],
     category: 'Fun',
     cooldown: '5s',
     minArgs: 1,
@@ -23,7 +23,7 @@ module.exports = {
             {
                 message.channel.send(`${target}, you have been ninja kicked by ${sender}.`)
             }
-            else if (message.content.startsWith(`${prefix}bodyslammed`))
+            else if (message.content.startsWith(`${prefix}bodyslam`))
             {
                 message.channel.send(`${target}, you have been body slammed by ${sender}.`)
             }
