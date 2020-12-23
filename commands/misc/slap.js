@@ -9,13 +9,13 @@ module.exports = {
 
     run: (message, args) => {
 
-        const sender = message.author;
+        const sender = message.author.username;
         const target = message.mentions.users.first();
         console.log(sender);
         console.log(target);
         console.log(args[0]);
 
-        if (args[0] != target) 
+        if (message.mentions.users.first() == null) 
         {
             message.reply(`Please be sure to mention a user when performing this command.`);
         }
