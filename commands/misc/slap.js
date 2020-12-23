@@ -19,7 +19,11 @@ module.exports = {
         }
         else 
         {
-            console.log(message);
+            //var commandCheck = message.content.
+            if (message.startsWith('ninjakick'))
+            {
+                console.log('ninjakick successful');
+            }
             message.channel.send(`${target}, you have been slapped by ${sender}.`)
         }
 
