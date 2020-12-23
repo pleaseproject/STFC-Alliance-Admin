@@ -19,10 +19,7 @@ module.exports = {
         }
         else 
         {
-            if (message.Contains('ninjakick'))
-            {
-                console.log('ninjakick successful');
-            }
+            console.log(message);
             message.channel.send(`${target}, you have been slapped by ${sender}.`)
         }
 
