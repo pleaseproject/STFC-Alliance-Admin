@@ -14,7 +14,7 @@ client.on('ready', async () => {
 
     new WOKCommands(client, 'commands', 'features')
         .setMongoPath(process.env.MONGO_URI)
-        .setSyntaxError('Incorrect syntax! Please use {PREFIX}{COMMAND} {ARGUMENTS}')
+        .setBotOwner(['139858712801181697'])
         .setDisplayName('STFCAA Commands')
         .setCategoryEmoji('Alliance', '🔫')
         .setCategoryEmoji('Drink', '🍺')
