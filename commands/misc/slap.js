@@ -20,7 +20,7 @@ module.exports = {
         else 
         {
             //var commandCheck = message.content.
-            if (message.content.startsWith('ninjakick'))
+            if (message.content.startsWith('{PREFIX}ninjakick'))
             {
                 console.log('ninjakick successful');
             }
