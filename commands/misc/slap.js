@@ -24,6 +24,11 @@ module.exports = {
             {
                 console.log('ninjakick successful');
             }
+            if (message.content.startsWith(`{PREFIX}test`))
+            {
+                console.log('ninjakick successful');
+            }
+            console.log(`{PREFIX}`);
             message.channel.send(`${target}, you have been slapped by ${sender}.`)
         }
 
