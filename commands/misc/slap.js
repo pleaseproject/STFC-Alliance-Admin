@@ -1,7 +1,7 @@
 module.exports = {
     name: 'slap',
     description: 'Slaps mentioned user to get their attention',
-    aliases: ['ninjakick', 'test'],
+    aliases: ['ninjakick', 'bodyslammed',],
     category: 'Fun',
     cooldown: '5s',
     minArgs: 1,
@@ -19,17 +19,18 @@ module.exports = {
         }
         else 
         {
-            //var commandCheck = message.content.
-            if (message.content.startsWith('!ninjakick'))
+            if (message.content.startsWith(`${prefix}ninjakick`))
             {
-                console.log('ninjakick successful');
+                message.channel.send(`${target}, you have been ninja kicked by ${sender}.`)
             }
-            if (message.content.startsWith(`${prefix}test`))
+            else if (message.content.startsWith(`${prefix}bodyslammed`))
             {
-                console.log('ninjakick successful');
+                message.channel.send(`${target}, you have been body slammed by ${sender}.`)
             }
-            console.log(`${prefix}`);
-            message.channel.send(`${target}, you have been slapped by ${sender}.`)
+            else
+            {
+                message.channel.send(`${target}, you have been slapped by ${sender}.`)
+            }
         }
 
     }
