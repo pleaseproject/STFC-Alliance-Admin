@@ -2,7 +2,7 @@ module.exports = {
     name: 'slap',
     description: 'Slaps mentioned user to get their attention',
     category: 'Fun',
-    globalCooldown: '5s',
+    cooldown: '5s',
     minArgs: 1,
     maxArgs: -1, // -1 Means no limit
     expectedArgs: "<Target user's @>",
