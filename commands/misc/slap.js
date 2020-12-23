@@ -1,7 +1,7 @@
 module.exports = {
     name: 'slap',
     description: 'Slaps mentioned user to get their attention',
-    alias: ['ninjakick'],
+    aliases: ['ninjakick',],
     category: 'Fun',
     cooldown: '5s',
     minArgs: 1,
