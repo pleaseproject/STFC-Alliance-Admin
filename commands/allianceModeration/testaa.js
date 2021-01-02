@@ -16,7 +16,7 @@ module.exports = {
         allianceId = args[0].toLowerCase();
         let status;
         let reason;
-        let allianceStatus;
+        const allianceStatus;
 
         let filter = (message) => !message.author.bot;
         let options = {
@@ -44,12 +44,16 @@ module.exports = {
             reason = collected.content;
             console.log(`Alliance ${allianceId}'s new status reason: ${reason}`);
             allianceStatus = {
-                allianceTag: allianceId,
-                allianceStatus: status,
-                reason: reason,
-                lastUpdated: new Date().getTime(),    
+                
             }              
         });
+
+        const allianceStatus = {
+            allianceTag: allianceId,
+            allianceStatus: await status,
+            reason: await reason,
+            lastUpdated: new Date().getTime(),
+        }
 
         await drinkSchema.findOneAndUpdate({
             guildId: guildId,
