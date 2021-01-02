@@ -26,20 +26,22 @@ module.exports = {
         let collectorTwo = message.channel.createMessageCollector(filter, options);
 
         message.reply(`Please provide ${allianceId}'s status.`);
-        collectorOne.on('collect', (m) => {
+        await collectorOne.on('collect', (m) => {
             message.reply(`Alliance ${allianceId}'s new status: ${m.content}`);               
         });
-        collectorOne.on('end', (collected) => {
-            console.log(`Alliance ${allianceId}'s new status: ${collected.content}`);               
+        await collectorOne.on('end', (collected) => {
+            status = collected.content
+            console.log(`Alliance ${allianceId}'s new status: ${collected.status}`);               
         });
 
         message.reply(`Please provide ${allianceId}'s status.`);
-        collectorTwo.on('collect', (m) => {
+        await collectorTwo.on('collect', (m) => {
             message.reply(`Alliance ${allianceId}'s new status reason: ${m.content}`);               
 
         });
-        collectorTwo.on('end', (collected) => {
-            console.log(`Alliance ${allianceId}'s new status reason: ${collected.content}`);               
+        await collectorTwo.on('end', (collected) => {
+            reason = collected.content
+            console.log(`Alliance ${allianceId}'s new status reason: ${reason}`);               
         });
 
         const allianceStatus = {
