@@ -14,54 +14,58 @@ module.exports = {
     run: async (message, args) => {
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
+        let status;
+        let reason;
 
-        let counter = 1;
         let filter = (message) => !message.author.bot;
         let options = {
-            max: 2,
+            max: 1,
             time: 15000
         };
-        let collector = message.channel.createMessageCollector(filter, options);
+        let collectorOne = message.channel.createMessageCollector(filter, options);
+        let collectorTwo = message.channel.createMessageCollector(filter, options);
 
-        collector.on('collect', (m) => {
-            // console.log(`collected: ${m.content}`);
-            if (x == 1) {
-                message.reply(`Please provide ${allianceId}'s status.`);
-                console.log(`collected: ${m.content}`);
-                counter++;
-            } else if (x == 2) {
-                message.reply(`Please provide reason for ${allianceId}'s status.`);
-                console.log(`collected: ${m.content}`);
-                counter++;
-            }                
+        message.reply(`Please provide ${allianceId}'s status.`);
+        collectorOne.on('collect', (m) => {
+            message.reply(`Alliance ${allianceId}'s new status: ${m.content}`);               
         });
-        collector.on('end', (collected) => {
-            console.log(`collected ${collected.size} items (${collected.content})`);
+        collectorOne.on('end', (collected) => {
+            console.log(`Alliance ${allianceId}'s new status: ${collected.content}`);               
         });
-        // const allianceStatus = {
-        //     allianceTag: allianceId,
-        //     allianceStatus: args[1],
-        //     reason: args.slice(2).join(' '),
-        //     lastUpdated: new Date().getTime(),
-        // }
 
-        // await drinkSchema.findOneAndUpdate({
-        //     guildId: guildId,
-        //     allianceId: allianceId,
-        // }, {
+        message.reply(`Please provide ${allianceId}'s status.`);
+        collectorTwo.on('collect', (m) => {
+            message.reply(`Alliance ${allianceId}'s new status reason: ${m.content}`);               
 
-        //     guildId: guildId,
-        //     allianceId: allianceId,
-        //     $push: {
+        });
+        collectorTwo.on('end', (collected) => {
+            console.log(`Alliance ${allianceId}'s new status reason: ${collected.content}`);               
+        });
 
-        //         allianceStatus: allianceStatus
+        const allianceStatus = {
+            allianceTag: allianceId,
+            allianceStatus: status,
+            reason: reason,
+            lastUpdated: new Date().getTime(),
+        }
 
-        //     }
-        // }, {
-        //     upsert: true,
-        // })
+        await drinkSchema.findOneAndUpdate({
+            guildId: guildId,
+            allianceId: allianceId,
+        }, {
 
-        // message.reply(`${allianceId} has been added/updated in the database!`);
+            guildId: guildId,
+            allianceId: allianceId,
+            $push: {
+
+                allianceStatus: allianceStatus
+
+            }
+        }, {
+            upsert: true,
+        })
+
+        message.reply(`${allianceId} has been added/updated in the database!`);
 
     }
 
