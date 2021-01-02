@@ -34,7 +34,7 @@ module.exports = {
             }
         })
 
-        collector.on('end', collected => {
+        collector.on('end', async collected => {
             console.log(`Collected ${collected.size} messages`)
 
             let counter = 0
