@@ -24,17 +24,16 @@ module.exports = {
         let collector = message.channel.createMessageCollector(filter, options);
 
         collector.on('collect', (m) => {
-            console.log(`collected: ${m.content}`);
-            switch(true) {
-                case(x == 1):
-                    message.reply(`Please provide ${allianceId}'s status.`);
-                    console.log(`collected: ${m.content}`);
-                    counter++;
-                case(x == 2):
-                    message.reply(`Please provide reason for ${allianceId}'s status.`);
-                    console.log(`collected: ${m.content}`);
-            }
-                
+            // console.log(`collected: ${m.content}`);
+            if (x == 1) {
+                message.reply(`Please provide ${allianceId}'s status.`);
+                console.log(`collected: ${m.content}`);
+                counter++;
+            } else if (x == 2) {
+                message.reply(`Please provide reason for ${allianceId}'s status.`);
+                console.log(`collected: ${m.content}`);
+                counter++;
+            }                
         });
         collector.on('end', (collected) => {
             console.log(`collected ${collected.size} items (${collected.content})`);
