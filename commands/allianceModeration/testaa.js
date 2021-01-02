@@ -18,7 +18,6 @@ module.exports = {
         let status
         let reason
         const questions = [
-            'What is the alliance you are looking to add/update?',
             `What is the status for \`\`${allianceId}\`\`?`,
             `What is the reason for this status?`
         ]
