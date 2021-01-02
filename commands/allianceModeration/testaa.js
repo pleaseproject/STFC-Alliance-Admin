@@ -13,7 +13,7 @@ module.exports = {
 
     run: async (message, args) => {
         const guildId = message.guild.id;
-        allianceId = args[0].toLowerCase();
+        //allianceId = args[0].toLowerCase();
 
         let status
         let reason
