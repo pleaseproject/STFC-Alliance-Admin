@@ -1,4 +1,4 @@
-const drinkSchema = require('../../schemas/allianceSchema.js');
+const allianceSchema = require('../../schemas/allianceSchema.js');
 
 module.exports = {
 
@@ -21,7 +21,7 @@ module.exports = {
             lastUpdated: new Date().getTime(),
         }
 
-        await drinkSchema.findOneAndUpdate({
+        await allianceSchema.findOneAndUpdate({
             guildId: guildId,
             allianceId: allianceId,
         }, {
