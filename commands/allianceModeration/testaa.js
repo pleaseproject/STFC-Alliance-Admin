@@ -16,6 +16,7 @@ module.exports = {
         allianceId = args[0].toLowerCase();
         let status;
         let reason;
+        const allianceStatus;
 
         let filter = (message) => !message.author.bot;
         let options = {
@@ -30,7 +31,7 @@ module.exports = {
             message.reply(`Alliance ${allianceId}'s new status: ${m.content}`);               
         });
         await collectorOne.on('end', (collected) => {
-            status = collected.content
+            status = collected.content;
             console.log(`Alliance ${allianceId}'s new status: ${collected.status}`);               
         });
 
@@ -40,16 +41,15 @@ module.exports = {
 
         });
         await collectorTwo.on('end', (collected) => {
-            reason = collected.content
-            console.log(`Alliance ${allianceId}'s new status reason: ${reason}`);               
+            reason = collected.content;
+            console.log(`Alliance ${allianceId}'s new status reason: ${reason}`);
+            allianceStatus = {
+                allianceTag: allianceId,
+                allianceStatus: status,
+                reason: reason,
+                lastUpdated: new Date().getTime(),    
+            }              
         });
-
-        const allianceStatus = {
-            allianceTag: allianceId,
-            allianceStatus: status,
-            reason: reason,
-            lastUpdated: new Date().getTime(),
-        }
 
         await drinkSchema.findOneAndUpdate({
             guildId: guildId,
