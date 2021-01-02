@@ -12,22 +12,23 @@ module.exports = {
     maxArgs: 1,
 
     run: async (message, args) => {
-
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
-        let filter = message => !message.author.id;
-        let counter = 0;
-        let collector = new discord.MessageCollector(message.channel, filter);
-        collector.on('collect', (message, col) => {
-            console.log('Collecting Alliance Status information.')
-            counter++;
-            if(counter == 2) collector.stop();
-        });
 
-        collector.on('end', collected => {
-            console.log('Collected Data:');
-            console.log(`${collected}`);
-        })
+
+        let filter = (message) => !message.author.bot;
+        let options = {
+            max: 2,
+            time: 15000
+        };
+        let collector = message.channel.createMessageCollector(filter, options);
+
+        collector.on('collect', (m) => {
+            console.log(`collected: ${m.content}`);
+        });
+        collector.on('end', (collected) => {
+            console.log(`collected ${collected.size} items`);
+        });
         // const allianceStatus = {
         //     allianceTag: allianceId,
         //     allianceStatus: args[1],
