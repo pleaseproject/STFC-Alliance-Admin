@@ -15,7 +15,7 @@ module.exports = {
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
 
-
+        let counter = 1;
         let filter = (message) => !message.author.bot;
         let options = {
             max: 2,
@@ -25,9 +25,19 @@ module.exports = {
 
         collector.on('collect', (m) => {
             console.log(`collected: ${m.content}`);
+            switch(true) {
+                case(x == 1):
+                    message.reply(`Please provide ${allianceId}'s status.`);
+                    console.log(`collected: ${m.content}`);
+                    counter++;
+                case(x == 2):
+                    message.reply(`Please provide reason for ${allianceId}'s status.`);
+                    console.log(`collected: ${m.content}`);
+            }
+                
         });
         collector.on('end', (collected) => {
-            console.log(`collected ${collected.size} items`);
+            console.log(`collected ${collected.size} items (${collected.content})`);
         });
         // const allianceStatus = {
         //     allianceTag: allianceId,
