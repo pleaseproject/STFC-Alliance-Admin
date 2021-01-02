@@ -8,70 +8,67 @@ module.exports = {
     name: 'testaa',
     aliases: [''],
     description: 'Adds new alliance to the database.',
-    minArgs: 1,
-    maxArgs: 1,
+    minArgs: 0,
+    maxArgs: 0,
 
     run: async (message, args) => {
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
-        let status;
-        let reason;
-        const allianceStatus;
 
-        let filter = (message) => !message.author.bot;
-        let options = {
-            max: 1,
-            time: 15000
-        };
-        let collectorOne = message.channel.createMessageCollector(filter, options);
-        let collectorTwo = message.channel.createMessageCollector(filter, options);
+        let status
+        let reason
+        const questions = [
+            'What is the alliance you are looking to add/update?',
+            'What is the status for the alliance?',
+            'What is the reason for this status?'
+        ]
+        let counter = 0;
+        let filter = m => m.author.id === message.author.id;
 
-        message.reply(`Please provide ${allianceId}'s status.`);
-        await collectorOne.on('collect', (m) => {
-            message.reply(`Alliance ${allianceId}'s new status: ${m.content}`);               
-        });
-        await collectorOne.on('end', (collected) => {
-            status = collected.content;
-            console.log(`Alliance ${allianceId}'s new status: ${collected.status}`);               
-        });
-
-        message.reply(`Please provide ${allianceId}'s status.`);
-        await collectorTwo.on('collect', (m) => {
-            message.reply(`Alliance ${allianceId}'s new status reason: ${m.content}`);               
-
-        });
-        await collectorTwo.on('end', (collected) => {
-            reason = collected.content;
-            console.log(`Alliance ${allianceId}'s new status reason: ${reason}`);
-            allianceStatus = {
-                
-            }              
-        });
-
-        const allianceStatus = {
-            allianceTag: allianceId,
-            allianceStatus: await status,
-            reason: await reason,
-            lastUpdated: new Date().getTime(),
-        }
-
-        await drinkSchema.findOneAndUpdate({
-            guildId: guildId,
-            allianceId: allianceId,
-        }, {
-
-            guildId: guildId,
-            allianceId: allianceId,
-            $push: {
-
-                allianceStatus: allianceStatus
-
-            }
-        }, {
-            upsert: true,
+        const collector = new discord.MessageCollector(message.channel, filter, {
+            max: questions.length,
+            time: 1000 * 45 // 45 seconds per answer?
         })
 
-        message.reply(`${allianceId} has been added/updated in the database!`);
+        message.channel.send(questions[counter++])
+        collector.on('collect', m => {
+            if (counter < questions.length) {
+                m.channel.send(questions[counter++])
+            }
+        })
+
+        collector.on('end', collected => {
+            console.log(`Collected ${collected.size} messages`)
+
+            let counter = 0
+            collected.forEach((value) => {
+                console.log(questions[counter++], value.content)
+            })
+        })
+        // const allianceStatus = {
+        //     allianceTag: allianceId,
+        //     allianceStatus: await status,
+        //     reason: await reason,
+        //     lastUpdated: new Date().getTime(),
+        // }
+
+        // await drinkSchema.findOneAndUpdate({
+        //     guildId: guildId,
+        //     allianceId: allianceId,
+        // }, {
+
+        //     guildId: guildId,
+        //     allianceId: allianceId,
+        //     $push: {
+
+        //         allianceStatus: allianceStatus
+
+        //     }
+        // }, {
+        //     upsert: true,
+        // })
+
+        // message.reply(`${allianceId} has been added/updated in the database!`);
 
     }
 
