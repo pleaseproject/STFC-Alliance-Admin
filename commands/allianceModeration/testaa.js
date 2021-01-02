@@ -15,6 +15,7 @@ module.exports = {
 
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
+        let filter = message => !message.author.id;
         let counter = 0;
         let collector = new discord.MessageCollector(message.channel, filter);
         collector.on('collect', (message, col) => {
