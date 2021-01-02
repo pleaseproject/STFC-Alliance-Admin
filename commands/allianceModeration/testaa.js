@@ -14,9 +14,7 @@ module.exports = {
     run: async (message, args) => {
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
-
-        let status
-        let reason
+        var arr = new Array(2);
         const questions = [
             `What is the status for \`\`${allianceId}\`\`?`,
             `What is the reason for this status?`
@@ -42,8 +40,10 @@ module.exports = {
             let counter = 0
             collected.forEach((value) => {
                 console.log(questions[counter++], value.content)
+                arr.push(value.content);
             })
         })
+        console.log(arr);
         // const allianceStatus = {
         //     allianceTag: allianceId,
         //     allianceStatus: await status,
