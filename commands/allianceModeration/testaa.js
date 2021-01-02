@@ -8,19 +8,19 @@ module.exports = {
     name: 'testaa',
     aliases: [''],
     description: 'Adds new alliance to the database.',
-    minArgs: 0,
-    maxArgs: 0,
+    minArgs: 1,
+    maxArgs: 1,
 
     run: async (message, args) => {
         const guildId = message.guild.id;
-        //allianceId = args[0].toLowerCase();
+        allianceId = args[0].toLowerCase();
 
         let status
         let reason
         const questions = [
             'What is the alliance you are looking to add/update?',
-            'What is the status for the alliance?',
-            'What is the reason for this status?'
+            `What is the status for \`\`${allianceId}\`\`?`,
+            `What is the reason for this status?`
         ]
         let counter = 0;
         let filter = m => m.author.id === message.author.id;
