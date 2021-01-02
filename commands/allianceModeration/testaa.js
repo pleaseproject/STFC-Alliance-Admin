@@ -16,7 +16,7 @@ module.exports = {
         allianceId = args[0].toLowerCase();
         let status;
         let reason;
-        const allianceStatus;
+        let allianceStatus;
 
         let filter = (message) => !message.author.bot;
         let options = {
