@@ -42,31 +42,33 @@ module.exports = {
                 console.log(questions[counter++], value.content)
                 arr.push(value.content);
             })
-
-            const allianceStatus = {
-                allianceTag: allianceId,
-                allianceStatus: arr[0],
-                reason: arr[1],
-                lastUpdated: new Date().getTime(),
+            for (const temp of arr) {
+                console.log(temp);
             }
+            // const allianceStatus = {
+            //     allianceTag: allianceId,
+            //     allianceStatus: arr[0],
+            //     reason: arr[1],
+            //     lastUpdated: new Date().getTime(),
+            // }
     
-            await drinkSchema.findOneAndUpdate({
-                guildId: guildId,
-                allianceId: allianceId,
-            }, {
+            // await drinkSchema.findOneAndUpdate({
+            //     guildId: guildId,
+            //     allianceId: allianceId,
+            // }, {
     
-                guildId: guildId,
-                allianceId: allianceId,
-                $push: {
+            //     guildId: guildId,
+            //     allianceId: allianceId,
+            //     $push: {
     
-                    allianceStatus: allianceStatus
+            //         allianceStatus: allianceStatus
     
-                }
-            }, {
-                upsert: true,
-            })
+            //     }
+            // }, {
+            //     upsert: true,
+            // })
     
-            message.reply(`${allianceId} has been added/updated in the database!`);    
+            // message.reply(`${allianceId} has been added/updated in the database!`);    
 
         })
     }
