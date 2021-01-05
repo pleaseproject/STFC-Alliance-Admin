@@ -5,7 +5,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
 
-    run: (message, args) => {
+    run: ({ message, args }) => {
 
         if (args.length < 1) {
             let tempNum = Math.floor(Math.random() * 100);

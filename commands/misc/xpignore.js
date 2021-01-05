@@ -8,7 +8,7 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
 
-    run: async (message) => {
+    run: async ({ message }) => {
 
         const guildId = message.guild.id;
         const channelId = message.mentions.channels.first();

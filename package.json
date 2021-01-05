@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "canvas": "^2.6.1",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
@@ -15,6 +15,6 @@
     "mongoose-auto-increment": "^5.0.1",
     "node.js": "^0.0.1-security",
     "path": "^0.12.7",
-    "wokcommands": "^1.1.5"
+    "wokcommands": "^1.2.0"
   }
 }

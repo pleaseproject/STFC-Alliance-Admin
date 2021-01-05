@@ -10,7 +10,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
 
-    run: async (message) => {
+    run: async ({ message }) => {
 
         const guildId = message.guild.id;
         const results = await allianceSchema.find({

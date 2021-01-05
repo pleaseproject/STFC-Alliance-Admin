@@ -7,7 +7,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
 
-    run: (message, args, text, client) => {
+    run: ({ message, client }) => {
 
         client.emit('guildMemberAdd', message.member)
 

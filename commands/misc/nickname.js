@@ -6,7 +6,7 @@ module.exports = {
     minArgs: 1,
     maxArgs: 2,
 
-    run: (message, args) => {
+    run: ({ message, args }) => {
         const owner = message.guild.owner.id;
         const target = message.mentions.users.first();
         const botRole = message.guild.roles.cache.find(r => r.name === "STFC-Alliance-Admin");

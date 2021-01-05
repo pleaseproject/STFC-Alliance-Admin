@@ -9,7 +9,7 @@ module.exports = {
     //syntaxError: 'Incorrect syntax! Use `{PREFIX}ping` ',
     expectedArgs: "<Target user's @>",
 
-    run: (message, args) => {
+    run: ({ message }) => {
 
         message.reply(`pong`);
 

@@ -9,10 +9,16 @@ const client = new DiscordJS.Client({
 
 client.on('ready', async () => {
     console.log('READY');
+    const messagesPath = '';
 
     await mongo();
 
-    new WOKCommands(client, 'commands', 'features')
+    new WOKCommands(client, {
+        commandsDir: 'commands',
+        featureDir: 'features',
+        messagesPath,
+        showWarns: true,
+    })
         .setMongoPath(process.env.MONGO_URI)
         .setBotOwner(['139858712801181697'])
         .setDisplayName('STFCAA Commands')

@@ -8,7 +8,7 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
 
-    run: async (message, args) => {
+    run: async ({ message, args }) => {
 
         let pollChannel = message.mentions.channels.first();
         let pollDescription = args.slice(1).join(' ');

@@ -10,7 +10,7 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: "<Target user's @>",
 
-    run: async (message, args, text, client, prefix) => {
+    run: async ({ message, args, prefix }) => {
         
         const id = message.guild.id;
         let flagEmptyList = false;

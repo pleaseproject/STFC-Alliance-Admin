@@ -10,7 +10,7 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: "<:Drink Emoji:>",
 
-    run: async (message, args) => {
+    run: async ({ message, args }) => {
 
         const id = message.guild.id;
         const drink = args.join(' ');

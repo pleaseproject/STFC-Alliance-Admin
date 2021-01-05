@@ -8,7 +8,7 @@ module.exports = {
     maxArgs: -1,
     expectedArgs: "<Target user's @>",
 
-    run: (message, args, text, client, prefix) => {
+    run: ({ message, prefix }) => {
 
         const sender = message.author.username;
         const target = message.mentions.users.first();

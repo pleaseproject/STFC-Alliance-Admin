@@ -9,7 +9,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: -1,
 
-    run: async (message, args, text, client, prefix) => {
+    run: async ({ message, args, prefix }) => {
         
         const id = message.guild.id;
         let flagEmptyList = false;

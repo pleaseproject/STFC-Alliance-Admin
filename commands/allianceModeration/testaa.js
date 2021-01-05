@@ -11,7 +11,7 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
 
-    run: async (message, args) => {
+    run: async ({ message, args }) => {
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
         var arr = new Array(2);

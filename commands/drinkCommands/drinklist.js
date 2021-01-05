@@ -9,7 +9,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
 
-    run: async (message, args) => {
+    run: async ({ message }) => {
         const id = message.guild.id;
 
         const results = await drinkSchema.findOne({
