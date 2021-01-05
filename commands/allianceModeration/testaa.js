@@ -45,6 +45,7 @@ module.exports = {
             for (const temp of arr) {
                 console.log(temp);
             }
+            console.log(arr.length());
             // const allianceStatus = {
             //     allianceTag: allianceId,
             //     allianceStatus: arr[0],
