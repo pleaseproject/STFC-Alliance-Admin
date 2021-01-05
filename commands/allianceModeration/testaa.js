@@ -38,34 +38,44 @@ module.exports = {
             console.log(`Collected ${collected.size} messages`)
 
             let counter = 0
+            let flag = true;
             collected.forEach((value) => {
                 console.log(questions[counter++], value.content)
+                if (value.content == null) {
+                    flag = false;
+                    return;
+                }
                 arr.push(value.content);
             })
-            const allianceStatus = {
-                allianceTag: allianceId,
-                allianceStatus: arr[0],
-                reason: arr[1],
-                lastUpdated: new Date().getTime(),
-            }
-    
-            await drinkSchema.findOneAndUpdate({
-                guildId: guildId,
-                allianceId: allianceId,
-            }, {
-    
-                guildId: guildId,
-                allianceId: allianceId,
-                $push: {
-    
-                    allianceStatus: allianceStatus
-    
+
+            if (flag) {
+                const allianceStatus = {
+                    allianceTag: allianceId,
+                    allianceStatus: arr[0],
+                    reason: arr[1],
+                    lastUpdated: new Date().getTime(),
                 }
-            }, {
-                upsert: true,
-            })
-    
-            message.reply(`${allianceId} has been added/updated in the database!`);    
+        
+                await drinkSchema.findOneAndUpdate({
+                    guildId: guildId,
+                    allianceId: allianceId,
+                }, {
+        
+                    guildId: guildId,
+                    allianceId: allianceId,
+                    $push: {
+        
+                        allianceStatus: allianceStatus
+        
+                    }
+                }, {
+                    upsert: true,
+                })
+        
+                message.reply(`${allianceId} has been added/updated in the database!`);  
+            } else {
+                message.reply(`There wasn an error during the adding of \`\`${allianceId}. This may be due to a time out! Please try your request again.`);
+            } 
 
         })
     }
