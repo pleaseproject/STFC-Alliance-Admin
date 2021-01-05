@@ -9,24 +9,39 @@ const client = new DiscordJS.Client({
 
 client.on('ready', async () => {
     console.log('READY');
-    const messagesPath = '';
 
     await mongo();
 
     new WOKCommands(client, {
         commandsDir: 'commands',
         featureDir: 'features',
-        messagesPath,
+        messagesPath: 'messages.json',
         showWarns: true,
     })
         .setMongoPath(process.env.MONGO_URI)
         .setBotOwner(['139858712801181697'])
-        .setDisplayName('STFCAA Commands')
-        .setCategoryEmoji('Alliance', '🔫')
-        .setCategoryEmoji('Drink', '🍺')
-        .setCategoryEmoji('Fun', '🎮')
-        .setCategoryEmoji('Util', '💻')
-        .setCategoryEmoji('Misc', '❓')
+        .setCategorySettings([
+            {
+                name:'Alliance',
+                emoji: '🔫'
+            },
+            {
+                name: 'Drink',
+                emoji: '🍺'
+            },
+            {
+                name: 'Fun',
+                emoji: '🎮'
+            },
+            {
+                name: 'Util',
+                emoji: '💻'
+            },
+            {
+                name: 'Misc',
+                emoji: '❓'
+            }
+        ])
 
 });
 
