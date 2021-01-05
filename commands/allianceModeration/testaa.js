@@ -41,14 +41,10 @@ module.exports = {
             let flag = true;
             collected.forEach((value) => {
                 console.log(questions[counter++], value.content)
-                if (value.content == null) {
-                    flag = false;
-                    return;
-                }
                 arr.push(value.content);
             })
 
-            if (flag) {
+            if (arr[0] != null) {
                 const allianceStatus = {
                     allianceTag: allianceId,
                     allianceStatus: arr[0],
