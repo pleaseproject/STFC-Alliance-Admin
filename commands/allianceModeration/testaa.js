@@ -14,7 +14,7 @@ module.exports = {
     run: async ({ message, args }) => {
         const guildId = message.guild.id;
         allianceId = args[0].toLowerCase();
-        var arr = new Array(2);
+        let arr = [];
         const questions = [
             `What is the status for \`\`${allianceId}\`\`?`,
             `What is the reason for this status?`
