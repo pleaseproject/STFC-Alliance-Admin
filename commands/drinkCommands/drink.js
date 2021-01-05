@@ -18,7 +18,7 @@ module.exports = {
         }, function(err,doc) {
             if (doc === null) {
                 message.reply(`The drink list on this server is empty please add drinks with the \`\`${prefix}drinkadd\`\` command!`);
-                flagEmptyList = true;
+                return;
             } else {
                 flagEmptyList = false;
             }
