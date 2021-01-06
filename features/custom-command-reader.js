@@ -1,11 +1,26 @@
 const prefix = '!';
+const customCommandSchema = require('../../schemas/customCommandSchema.js');
 
 module.exports = (client) => {
 
     client.on('message', (message) => {
         //console.log(`${message.guild.name} => ${message.channel.name} => ${message.author.username}: ${message.content}`);
         if (message.content.startsWith(prefix)) {
-            console.log(message.content.substring(1, message.content.indexOf(' ')));
+            const guildId = message.guild.id;
+            let commandName = message.content.substring(1, message.content.indexOf(' '));
+            
+            const results = await customCommandSchema.findOne({
+                guildId,
+                commandName
+            })
+
+            if (!results) {
+                console.log(`No custom command such as ${commandName}.`);
+                return;
+            }
+
+            message.reply(`${results.response}`);
+    
         }
     })
 }
