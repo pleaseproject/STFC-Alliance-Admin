@@ -13,14 +13,15 @@ module.exports = (client) => {
         //console.log(`${message.guild.name} => ${message.channel.name} => ${message.author.username}: ${message.content}`);
         if (message.content.startsWith(prefix)) {
             const guildId = message.guild.id;
+            commandName = message.content.slice(message.content.length - (message.content.length - 1));
             console.log(commandName);
             const results = await customCommandSchema.findOne({
                 guildId: guildId,
-                commandName: message.content.substring(1, message.content.indexOf(' '))
+                commandName: commandName
             })
 
             if (!results) {
-                console.log(`No custom command such as ${message.content.substring(1, message.content.indexOf(' '))}.`);
+                console.log(`No custom command such as ${commandName}.`);
                 return;
             }
 
