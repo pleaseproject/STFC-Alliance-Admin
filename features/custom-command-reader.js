@@ -3,7 +3,7 @@ const customCommandSchema = require('../schemas/customCommandSchema.js');
 let commandName = '';
 
 module.exports = (client) => {
-    client.on('message', async (message) => {
+    client.on('message', (message) => {
         if (message.content.startsWith(prefix)) {
             commandName = message.content.substring(1, message.content.indexOf(' '))
         }
