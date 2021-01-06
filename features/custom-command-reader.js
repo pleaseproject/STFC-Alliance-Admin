@@ -1,7 +1,7 @@
 const prefix = '!';
 const customCommandSchema = require('../../schemas/customCommandSchema.js');
 
-module.exports = (client) => {
+module.exports = async (client) => {
 
     client.on('message', (message) => {
         //console.log(`${message.guild.name} => ${message.channel.name} => ${message.author.username}: ${message.content}`);
