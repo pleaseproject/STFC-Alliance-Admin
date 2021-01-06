@@ -44,7 +44,7 @@ module.exports = {
                 arr.push(value.content);
             })
 
-            if (arr[0] != null) {
+            if (arr[0] != null && arr[1] != null) {
                 const allianceStatus = {
                     allianceTag: allianceId,
                     allianceStatus: arr[0],
