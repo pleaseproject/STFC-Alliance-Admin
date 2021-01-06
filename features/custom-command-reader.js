@@ -8,7 +8,7 @@ module.exports = async (client) => {
         if (message.content.startsWith(prefix)) {
             const guildId = message.guild.id;
             let commandName = message.content.substring(1, message.content.indexOf(' '));
-            
+            console.log(commandName);
             const results = await customCommandSchema.findOne({
                 guildId: guildId,
                 commandName: commandName
