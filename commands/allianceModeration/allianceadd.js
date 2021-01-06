@@ -52,7 +52,7 @@ module.exports = {
                     lastUpdated: new Date().getTime(),
                 }
         
-                await drinkSchema.findOneAndUpdate({
+                await allianceSchema.findOneAndUpdate({
                     guildId: guildId,
                     allianceId: allianceId,
                 }, {
