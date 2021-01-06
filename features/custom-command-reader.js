@@ -5,7 +5,7 @@ let commandName = '';
 module.exports = (client) => {
     client.on('message', (message) => {
         if (message.content.startsWith(prefix)) {
-            commandName = message.content.substring(1, message.content.indexOf(' '))
+            console.log(message.content.substring(1, message.content.indexOf(' ')));
         }
     })
 
