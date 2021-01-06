@@ -40,6 +40,10 @@ client.on('ready', async () => {
             {
                 name: 'Misc',
                 emoji: '❓'
+            },
+            {
+                name: 'Admin Testing',
+                hidden: true
             }
         ])
 
