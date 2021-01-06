@@ -11,7 +11,7 @@ module.exports = async (client) => {
             
             const results = await customCommandSchema.findOne({
                 guildId,
-                commandName
+                commandName: commandName
             })
 
             if (!results) {
