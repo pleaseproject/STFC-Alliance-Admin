@@ -1,5 +1,5 @@
 const prefix = '!';
-const customCommandSchema = require('../../schemas/customCommandSchema.js');
+const customCommandSchema = require('../schemas/customCommandSchema.js');
 
 module.exports = async (client) => {
 
