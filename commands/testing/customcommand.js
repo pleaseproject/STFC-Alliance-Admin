@@ -1,4 +1,5 @@
 const customCommandSchema = require('../../schemas/customCommandSchema.js');
+const discord = require('discord.js');
 
 module.exports = {
 
