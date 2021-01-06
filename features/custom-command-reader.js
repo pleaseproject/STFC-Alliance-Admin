@@ -25,7 +25,7 @@ module.exports = (client) => {
                 return;
             }
 
-            message.reply(`${results.response}`);
+            message.reply(`${results.commandResponse}`);
     
         }
     })
