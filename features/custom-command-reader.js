@@ -1,13 +1,19 @@
 const prefix = '!';
 const customCommandSchema = require('../schemas/customCommandSchema.js');
+let commandName = '';
 
 module.exports = async (client) => {
+    client.on('message', async (message) => {
+        if (message.content.startsWith(prefix)) {
+            commandName = message.content.substring(1, message.content.indexOf(' '))
+        }
+    })
 
     client.on('message', async (message) => {
         //console.log(`${message.guild.name} => ${message.channel.name} => ${message.author.username}: ${message.content}`);
         if (message.content.startsWith(prefix)) {
             const guildId = message.guild.id;
-            console.log(message.content.substring(1, message.content.indexOf(' ')));
+            console.log(commandName);
             const results = await customCommandSchema.findOne({
                 guildId: guildId,
                 commandName: message.content.substring(1, message.content.indexOf(' '))
