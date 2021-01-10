@@ -3,12 +3,6 @@ const customCommandSchema = require('../schemas/customCommandSchema.js');
 let commandName = '';
 
 module.exports = (client) => {
-    client.on('message', (message) => {
-        if (message.content.startsWith(prefix)) {
-            console.log(message.content.slice(message.content.length - (message.content.length - 1)));
-        }
-    })
-
     client.on('message', async (message) => {
         //console.log(`${message.guild.name} => ${message.channel.name} => ${message.author.username}: ${message.content}`);
         if (message.content.startsWith(prefix)) {
