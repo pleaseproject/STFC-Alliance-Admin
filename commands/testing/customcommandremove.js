@@ -29,6 +29,4 @@ module.exports = {
 
     }
 
-    }
-
 }

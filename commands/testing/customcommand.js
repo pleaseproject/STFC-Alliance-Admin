@@ -14,7 +14,7 @@ module.exports = {
     run: async ({ message, args }) => {
 
         const guildId = message.guild.id;
-        const commandName = args[0];
+        const commandName = args[0].toLowerCase();
         let commandResponse = '';
         const questions = [
             `What is the response for command \`\`${commandName}\`\`?`
