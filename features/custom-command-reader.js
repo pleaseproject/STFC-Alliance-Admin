@@ -7,7 +7,7 @@ module.exports = (client) => {
         //console.log(`${message.guild.name} => ${message.channel.name} => ${message.author.username}: ${message.content}`);
         if (message.content.startsWith(prefix)) {
             const guildId = message.guild.id;
-            commandName = message.content.slice(message.content.length - (message.content.length - 1));
+            commandName = message.content.slice(message.content.length - (message.content.length - 1)).toLowerCase();
             console.log(commandName);
             const results = await customCommandSchema.findOne({
                 guildId: guildId,
