@@ -83,7 +83,7 @@ module.exports = {
             {
                 upsert: true,
             })
-            //firstMessage.react(emoji)
+            firstMessage.react(emoji)
             console.log('Here is the first message: ' + emoji)
         })
 
