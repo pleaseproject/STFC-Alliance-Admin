@@ -1,4 +1,3 @@
-
 const verificationSchema = require('../../schemas/verificationSchema')
 
 const cache = new Map()
@@ -72,7 +71,6 @@ module.exports = {
                 return
               }
       
-            firstMessage.react(emoji)
             await verificationSchema.findOneAndUpdate(
             {
                 _id: guild.id,
@@ -85,6 +83,7 @@ module.exports = {
             {
                 upsert: true,
             })
+            //firstMessage.react(emoji)
         })
 
     // message.reply('Rule Verification Channel Set!').then((message) => {
