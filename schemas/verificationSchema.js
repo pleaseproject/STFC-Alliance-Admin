@@ -12,4 +12,4 @@ const verificationSchema = mongoose.Schema({
   roleId: reqString,
 })
 
-module.exports = mongoose.model('verification-channels',verificationSchema)
+module.exports = mongoose.model('verification-channels', verificationSchema)

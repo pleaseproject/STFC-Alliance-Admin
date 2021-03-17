@@ -75,17 +75,17 @@ module.exports = {
                 await verificationSchema.findOneAndUpdate({
                     _id: guild.id
                 }, {
-                   _id: guild.id,
-                   channelId: channel.id,
-                   roleId: roleId 
-                }, {})
+                    _id: guild.id,
+                    channelId: channel.id,
+                    roleId: roleId 
+                }, {
+                    upsert: true,
+                })
             })
         })
 
+        await fetch()
+
     message.reply('Rule Verification Channel Set!')
   }
-}
-
-module.exports.getChannelId = (guildId) => {
-  return cache.get(guildId)
 }
