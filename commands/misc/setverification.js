@@ -36,7 +36,7 @@ module.exports = {
         if (emoji.includes(':')) {
             const split = emoji.split(':')
             const emojiName = split[1]
-
+    
             emoji = guild.emojis.cache.find((emoji) => {
                 return emoji.name === emojiName
             })
@@ -84,7 +84,7 @@ module.exports = {
                 upsert: true,
             })
             //firstMessage.react(emoji)
-            console.log('Here is the first message: ' + results)
+            console.log('Here is the first message: ' + emoji)
         })
 
     // message.reply('Rule Verification Channel Set!').then((message) => {
