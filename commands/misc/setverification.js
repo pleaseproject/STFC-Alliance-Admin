@@ -84,6 +84,7 @@ module.exports = {
                 upsert: true,
             })
             //firstMessage.react(emoji)
+            console.log('Here is the first message: ' + firstMessage)
         })
 
     // message.reply('Rule Verification Channel Set!').then((message) => {
