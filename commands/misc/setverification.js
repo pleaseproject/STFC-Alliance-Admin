@@ -87,7 +87,11 @@ module.exports = {
             })
         })
 
-    message.reply('Rule Verification Channel Set!')
+    // message.reply('Rule Verification Channel Set!').then((message) => {
+    //     message.delete({
+    //         timeout: 1000 * seconds,
+    //     })
+    // })
     })
   }
 }
