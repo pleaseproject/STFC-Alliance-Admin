@@ -16,6 +16,7 @@ module.exports = {
     requiredPermissions: ['ADMINISTRATOR'],
     category: 'Util',
     run: async ({ message, args }) => {
+        const seconds = 3
 
         if (args.length !== 2) {
             message
@@ -77,7 +78,7 @@ module.exports = {
                    _id: guild.id,
                    channelId: channel.id,
                    roleId: roleId 
-                }, {}, {})
+                }, {})
             })
         })
 
