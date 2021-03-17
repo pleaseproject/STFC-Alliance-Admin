@@ -84,8 +84,6 @@ module.exports = {
             })
         })
 
-        await fetch()
-
     message.reply('Rule Verification Channel Set!')
   }
 }
