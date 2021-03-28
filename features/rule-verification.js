@@ -39,8 +39,9 @@ module.exports = (client) => {
       const member = guild.members.cache.get(user.id)
       member.roles.add(guild.roles.cache.get(roleId))
       console.log(`Assigning Role { ${roleId} } to { ${member} }`)
+
     }
-  })
+  }).then(message.channel.send("YO"));
 }
 
 module.exports.fetch = fetchData
