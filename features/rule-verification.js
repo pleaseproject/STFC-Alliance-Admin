@@ -32,6 +32,8 @@ module.exports = (client) => {
   populateCache(client)
 
   client.on('messageReactionAdd', (reaction, user) => {
+    client.on('message', (message) => {
+
     const channelId = reaction.message.channel.id
     const roleId = verificationCache[channelId]
 
@@ -39,13 +41,12 @@ module.exports = (client) => {
       const { guild } = reaction.message
       const member = guild.members.cache.get(user.id)
       member.roles.add(guild.roles.cache.get(roleId))
+      message.reactions.get(emoji).remove(user);
       console.log(`Assigning Role { ${roleId} } to { ${member} }`)
-
+      console.log(`Removing { ${emoji} } reaction for user { ${user} }`)
     }
-    client.on('message', (message) => {
-        message.reactions.get(emoji).remove(user);
     });
-  })
+  });
 }
 
 module.exports.fetch = fetchData
