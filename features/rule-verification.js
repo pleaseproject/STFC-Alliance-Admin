@@ -33,6 +33,7 @@ module.exports = (client) => {
   client.on('messageReactionAdd', (reaction, user) => {
     const channelId = reaction.message.channel.id
     const roleId = verificationCache[channelId]
+    if (user.bot) return;
     if (roleId) {
       const { guild } = reaction.message
       const member = guild.members.cache.get(user.id)
