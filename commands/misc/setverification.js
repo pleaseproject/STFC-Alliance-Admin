@@ -64,7 +64,7 @@ module.exports = {
         }
 
         message.delete().then(() => {
-            channel.messages.fetch().then(async (results) => {
+            channel.messages.fetch({ limit: 1 }).then(async (results) => {
                 const firstMessage = results.last()
                 console.log(results)
                 if (!firstMessage) {
