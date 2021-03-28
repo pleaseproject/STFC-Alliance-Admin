@@ -16,7 +16,7 @@ module.exports = {
     category: 'Util',
     name: 'roll',
     aliases: ['sv'],
-    description: 'Rolls a random number between 1 and 100 by default unless specificed by the user.',
+    description: 'Expected execution of this command. !sv <Emoji> <role>',
     run: async ({ message, args }) => {
         const seconds = 3
 
@@ -49,7 +49,6 @@ module.exports = {
             roleId.lastIndexOf("&") + 1,
             roleId.lastIndexOf(">")
         ));
-        console.log(role);
 
         if (!role) {
             message
@@ -91,7 +90,7 @@ module.exports = {
                 upsert: true,
             })
             firstMessage.react(emoji)
-            console.log('Here is the first message: ' + emoji)
+            console.log(`Here is the first message: ${firstMessage} with reaction ${emoji}`)
         })
 
     // message.reply('Rule Verification Channel Set!').then((message) => {
