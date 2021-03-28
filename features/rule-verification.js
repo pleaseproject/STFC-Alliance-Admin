@@ -9,7 +9,7 @@ const fetchData = async (client) => {
 
       for (const result of results) {
         const guild = client.guilds.cache.get(result._id)
-        emoji = results.emoji
+        emoji = results.ejo
         if (guild) {
           const channel = guild.channels.cache.get(result.channelId)
           if (channel) {
@@ -32,8 +32,6 @@ module.exports = (client) => {
   populateCache(client)
 
   client.on('messageReactionAdd', (reaction, user) => {
-    client.on('message', (message) => {
-
     const channelId = reaction.message.channel.id
     const roleId = verificationCache[channelId]
 
@@ -41,12 +39,12 @@ module.exports = (client) => {
       const { guild } = reaction.message
       const member = guild.members.cache.get(user.id)
       member.roles.add(guild.roles.cache.get(roleId))
-      message.reactions.get(emoji).remove(user);
+      reaction.users.remove(user);
       console.log(`Assigning Role { ${roleId} } to { ${member} }`)
-      console.log(`Removing { ${emoji} } reaction for user { ${user} }`)
+
     }
-    });
-  });
+  })
+  
 }
 
 module.exports.fetch = fetchData
