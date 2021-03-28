@@ -66,7 +66,7 @@ module.exports = {
         message.delete().then(() => {
             channel.messages.fetch({ limit: 1 }).then(async (results) => {
                 const firstMessage = results.first()
-                console.log(results)
+                console.log(results[0])
                 if (!firstMessage) {
                     channel.send('There is no message to react to').then((message) => {
                     message.delete({
