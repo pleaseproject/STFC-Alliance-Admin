@@ -2,13 +2,14 @@ const verificationSchema = require('../schemas/verificationSchema');
 
 // { 'channelId': 'roleId' }
 let verificationCache = {}
-
+let emoji;
 const fetchData = async (client) => {
   console.log('FETCHING DATA')
       const results = await verificationSchema.find({})
 
       for (const result of results) {
         const guild = client.guilds.cache.get(result._id)
+        emoji = results.emoji
         if (guild) {
           const channel = guild.channels.cache.get(result.channelId)
           if (channel) {
@@ -41,7 +42,10 @@ module.exports = (client) => {
       console.log(`Assigning Role { ${roleId} } to { ${member} }`)
 
     }
-  }).then(message.channel.send("YO"));
+    client.on('message', (message) => {
+        message.reactions.get(emoji).remove(user);
+    });
+  })
 }
 
 module.exports.fetch = fetchData
