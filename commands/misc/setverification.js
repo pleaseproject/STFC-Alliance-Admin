@@ -65,7 +65,7 @@ module.exports = {
 
         message.delete().then(() => {
             channel.messages.fetch().then(async (results) => {
-                const firstMessage = results // Sets to first message in channel
+                const firstMessage = results.last() // Sets to first message in channel. Set to first() to do last sent message
                 console.log(results)
                 if (!firstMessage) {
                     channel.send('There is no message to react to').then((message) => {
