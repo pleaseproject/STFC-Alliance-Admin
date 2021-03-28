@@ -14,6 +14,9 @@ loadData()
 module.exports = {
     requiredPermissions: ['ADMINISTRATOR'],
     category: 'Util',
+    name: 'roll',
+    aliases: ['sv'],
+    description: 'Rolls a random number between 1 and 100 by default unless specificed by the user.',
     run: async ({ message, args }) => {
         const seconds = 3
 
@@ -42,7 +45,11 @@ module.exports = {
             })
         }
         const roleId = args[1]
-        const role = guild.roles.cache.get(roleId)
+        const role = guild.roles.cache.get(roleId.substring(
+            roleId.lastIndexOf("&") + 1,
+            roleId.lastIndexOf(">")
+        ));
+        console.log(role);
 
         if (!role) {
             message
