@@ -16,7 +16,7 @@ module.exports = {
     category: 'Util',
     name: 'roll',
     aliases: ['sv'],
-    description: 'Expected execution of this command. !sv <Emoji> <role>',
+    description: 'This will add a reaction to the first message in the channel for user verification. Expected execution of this command. !sv <Emoji> <role>',
     run: async ({ message, args }) => {
         const seconds = 3
 
@@ -65,17 +65,17 @@ module.exports = {
 
         message.delete().then(() => {
             channel.messages.fetch({ limit: 1 }).then(async (results) => {
-              const firstMessage = results.first()
+                const firstMessage = results.first()
+                console.log(firstMessage)
+                if (!firstMessage) {
+                    channel.send('There is no message to react to').then((message) => {
+                    message.delete({
+                        timeout: 1000 * seconds,
+                    })
+                    })
       
-              if (!firstMessage) {
-                channel.send('There is no message to react to').then((message) => {
-                  message.delete({
-                    timeout: 1000 * seconds,
-                  })
-                })
-      
-                return
-              }
+                    return
+                }
       
             await verificationSchema.findOneAndUpdate(
             {
@@ -93,11 +93,11 @@ module.exports = {
             console.log(`Here is the first message: ${firstMessage} with reaction ${emoji}`)
         })
 
-    // message.reply('Rule Verification Channel Set!').then((message) => {
-    //     message.delete({
-    //         timeout: 1000 * seconds,
-    //     })
-    // })
+    message.reply('Rule Verification Channel Set!').then((message) => {
+        message.delete({
+            timeout: 1000 * seconds,
+        })
+    })
     })
   }
 }
