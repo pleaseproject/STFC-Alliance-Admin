@@ -33,12 +33,12 @@ module.exports = (client) => {
   client.on('messageReactionAdd', (reaction, user) => {
     const channelId = reaction.message.channel.id
     const roleId = verificationCache[channelId]
-
     if (roleId) {
       const { guild } = reaction.message
       const member = guild.members.cache.get(user.id)
       member.roles.add(guild.roles.cache.get(roleId))
       reaction.users.remove(user);
+      console.log(user)
       console.log(`Assigning Role { ${roleId} } to { ${member} }`)
     }
   })
