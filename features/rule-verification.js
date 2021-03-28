@@ -24,7 +24,7 @@ const populateCache = async (client) => {
 
   await fetchData(client)
 
-  setTimeout(populateCache, 1000 * 60 * 10) // 10m
+  //setTimeout(populateCache, 1000 * 60 * 10) // 10m
 }
 
 module.exports = (client) => {
