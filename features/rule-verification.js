@@ -38,6 +38,7 @@ module.exports = (client) => {
       const { guild } = reaction.message
       const member = guild.members.cache.get(user.id)
       member.roles.add(guild.roles.cache.get(roleId))
+      reaction.users.remove(user);
       console.log(`Assigning Role { ${roleId} } to { ${member} }`)
     }
   })
