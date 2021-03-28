@@ -37,7 +37,7 @@ module.exports = (client) => {
     if (roleId) {
       const { guild } = reaction.message
       const member = guild.members.cache.get(user.id)
-      member.roles.add(roleId)
+      member.roles.add(776639146403299351)
       console.log(`Assigning Role { ${roleId} } to { ${member} }`)
     }
   })
