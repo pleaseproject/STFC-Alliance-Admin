@@ -84,7 +84,7 @@ module.exports = {
             {
                 _id: guild.id,
                 channelId: channel.id,
-                roleId,
+                roleId: role,
             },
             {
                 upsert: true,
