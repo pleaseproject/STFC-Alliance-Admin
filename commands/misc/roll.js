@@ -13,7 +13,7 @@ module.exports = {
         } else {
             if(!isNaN(args[0])) {
                 let x = args[0];
-                let tempNum = Math.floor(Math.random() * (x - 1) + 1);
+                let tempNum = Math.floor(Math.random() * x + 1);
                 message.reply(`Rolling a random number between 1-${x}! \n You have rolled ${tempNum}!`);
             } else {
                 message.reply(`The arguement \`\`${args[0]}\`\` is not a number. Please try the command again with a number!`);
