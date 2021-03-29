@@ -21,20 +21,6 @@ module.exports = {
     description: 'This will add a reaction to the first message in the channel for user verification. Expected execution of this command. !sv <Emoji> <role>',
     run: async ({ message, args }) => {
         const seconds = 3
-
-        if (args.length !== 2) {
-            message
-                .reply('You must provide an emoji to react with and a role ID')
-                .then((message) => {
-                    message.delete({
-                        timeout: 1000 * seconds,
-                    })
-                })
-
-            message.delete()
-            return
-        }
-
         const { guild, channel } = message
 
         let emoji = args[0]
