@@ -14,8 +14,10 @@ loadData()
 module.exports = {
     requiredPermissions: ['ADMINISTRATOR'],
     category: 'Util',
-    name: 'roll',
+    name: 'setverification',
     aliases: ['sv'],
+    minArgs: 2,
+    maxArgs: 3,
     description: 'This will add a reaction to the first message in the channel for user verification. Expected execution of this command. !sv <Emoji> <role>',
     run: async ({ message, args }) => {
         const seconds = 3
@@ -66,7 +68,6 @@ module.exports = {
         message.delete().then(() => {
             channel.messages.fetch().then(async (results) => {
                 const firstMessage = results.last() // Sets to first message in channel. Set to first() to do last sent message
-                console.log(results)
                 if (!firstMessage) {
                     channel.send('There is no message to react to').then((message) => {
                     message.delete({
