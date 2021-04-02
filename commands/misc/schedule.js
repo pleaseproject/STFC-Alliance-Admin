@@ -1,3 +1,5 @@
+const discord = require('discord.js');
+
 module.exports = {
     name: 'schedule',
     description: 'Allows a user to schedule messages to be sent as certain times',
