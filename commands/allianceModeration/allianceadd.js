@@ -38,7 +38,6 @@ module.exports = {
             console.log(`Collected ${collected.size} messages`)
 
             let counter = 0
-            let flag = true;
             collected.forEach((value) => {
                 console.log(questions[counter++], value.content)
                 arr.push(value.content);
