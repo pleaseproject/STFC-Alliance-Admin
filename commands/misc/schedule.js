@@ -27,17 +27,14 @@ module.exports = {
             time: 1000 * 45 // 45 seconds per answer?
         })
 
+        m.channel.send(question)
         iterationCollector.on('collect', m => {
-            m.channel.send(question)
+            console.log(m.content);
+            iterations = m.content;
         })
 
         iterationCollector.on('end', async collected => {
-            console.log(`Collected ${collected.size} messages`)
-            collected.forEach((value) => {
-                console.log(question, value.content)
-                iterations= value.content;
-            })
-
+            message.channel.send(`Question Asked: ${question} Iterations Received: ${iterations}`);
         })
 
         message.channel.send(`Question Asked: ${question} Iterations Received: ${iterations}`);
