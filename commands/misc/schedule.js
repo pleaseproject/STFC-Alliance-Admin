@@ -17,17 +17,21 @@ module.exports = {
         let counter = 0;
         let filter = m => m.author.id === message.author.id;
 
+        const iterationCollector = new discord.MessageCollector(message.channel, filter, {
+            max: 1,
+            time: 1000 * 45 // 45 seconds per answer?
+        })
+
         const collector = new discord.MessageCollector(message.channel, filter, {
             //max: questions.length,
             time: 1000 * 45 // 45 seconds per answer?
         })
 
-        message.channel.send(question)
-        collector.on('collect', m => {
-        
+        iterationCollector.on('collect', m => {
+            m.channel.send(question)
         })
 
-        collector.on('end', async collected => {
+        iterationCollector.on('end', async collected => {
             console.log(`Collected ${collected.size} messages`)
             collected.forEach((value) => {
                 console.log(question, value.content)
