@@ -27,7 +27,7 @@ module.exports = {
             time: 1000 * 45 // 45 seconds per answer?
         })
 
-        m.channel.send(question)
+        message.channel.send(question)
         iterationCollector.on('collect', m => {
             console.log(m.content);
             iterations = m.content;
