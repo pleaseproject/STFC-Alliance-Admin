@@ -9,8 +9,9 @@ module.exports = {
     run: async ({ message, args }) => {
         const guildId = message.guild.id;
         let iterations;
-        const question = `How many scheduled messages?`
-        const repeatedQuestions = [
+        let iterationCounter = 1;
+        const iterationsQuestion = `How many scheduled messages?`
+        const questions = [
             `What is the location for this TC event?`,
             `What time will this event occur?`,
         ]
@@ -20,66 +21,67 @@ module.exports = {
         const iterationCollector = new discord.MessageCollector(message.channel, filter, {
             max: 1,
             time: 1000 * 45 // 45 seconds per answer?
-        })
+        });
 
         const collector = new discord.MessageCollector(message.channel, filter, {
             //max: questions.length,
             time: 1000 * 45 // 45 seconds per answer?
-        })
+        });
 
-        message.channel.send(question)
+        message.channel.send(iterationsQuestion)
         iterationCollector.on('collect', m => {
-            console.log(m.content);
             iterations = m.content;
-        })
+        });
 
-        iterationCollector.on('end', async collected => {
-            message.channel.send(`Question Asked: ${question} Iterations Received: ${iterations}`);
-        })
+        iterationCollector.on('end', collected => {
+            console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
+        });
 
-        message.channel.send(`Question Asked: ${question} Iterations Received: ${iterations}`);
+        message.channel.send(questions[0])
+        collector.on('collect', m => {
+            do {
+                arr.push(value.content);
+
+                m.channel.send(questions[1]);
+                arr.push(value.content);
 
 
-        // message.channel.send(questions[counter++])
-        // collector.on('collect', m => {
-        //     if (counter < questions.length) {
-        //         m.channel.send(questions[counter++])
-        //     }
-        // })
+            } while (iterationCounter <= iterations);
+        });
 
-        // collector.on('end', async collected => {
-        //     console.log(`Collected ${collected.size} messages`)
+        collector.on('end', async collected => {
+            console.log(`Collected ${collected.size} messages`)
+            console.log(arr);
+            // let counter = 0
+            // collected.forEach((value) => {
+            //     console.log(questions[counter++], value.content);
+            //     arr.push(value.content);
+            // });
 
-        //     let counter = 0
-        //     collected.forEach((value) => {
-        //         console.log(questions[counter++], value.content)
-        //         arr.push(value.content);
-        //     })
-
-        //     // if (arr[0] != null && arr[1] != null) {
-        //     //     const allianceStatus = {
-        //     //         allianceTag: allianceId,
-        //     //         allianceStatus: arr[0],
-        //     //         reason: arr[1],
-        //     //         lastUpdated: new Date().getTime(),
-        //     //     }
+            // if (arr[0] != null && arr[1] != null) {
+            //     const allianceStatus = {
+            //         allianceTag: allianceId,
+            //         allianceStatus: arr[0],
+            //         reason: arr[1],
+            //         lastUpdated: new Date().getTime(),
+            //     }
         
-        //     //     await allianceSchema.findOneAndUpdate({
-        //     //         guildId: guildId,
-        //     //         allianceId: allianceId,
-        //     //     }, {
+            //     await allianceSchema.findOneAndUpdate({
+            //         guildId: guildId,
+            //         allianceId: allianceId,
+            //     }, {
         
-        //     //         guildId: guildId,
-        //     //         allianceId: allianceId,
-        //     //         $push: {
+            //         guildId: guildId,
+            //         allianceId: allianceId,
+            //         $push: {
         
-        //     //             allianceStatus: allianceStatus
+            //             allianceStatus: allianceStatus
         
-        //     //         }
-        //     //     }, {
-        //     //         upsert: true,
-        //     //     })
+            //         }
+            //     }, {
+            //         upsert: true,
+            //     })
 
-        // })
+        });
     }
 };
