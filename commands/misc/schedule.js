@@ -18,7 +18,7 @@ module.exports = {
         let filter = m => m.author.id === message.author.id;
 
         const collector = new discord.MessageCollector(message.channel, filter, {
-            max: questions.length,
+            //max: questions.length,
             time: 1000 * 45 // 45 seconds per answer?
         })
 
