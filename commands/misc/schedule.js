@@ -35,53 +35,55 @@ module.exports = {
 
         iterationCollector.on('end', collected => {
             console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
+            message.channel.send(questions[0])
+            collector.on('collect', m => {
+                do {
+                    arr.push(m.content);
+    
+                    m.channel.send(questions[1]);
+                    arr.push(m.content);
+    
+                    iterationCounter++;
+    
+                } while (iterationCounter <= iterations);
+            });
         });
 
-        message.channel.send(questions[0])
-        collector.on('collect', m => {
-            do {
-                arr.push(value.content);
-
-                m.channel.send(questions[1]);
-                arr.push(value.content);
 
 
-            } while (iterationCounter <= iterations);
-        });
+        // collector.on('end', async collected => {
+        //     console.log(`Collected ${collected.size} messages`)
+        //     console.log(arr);
+        //     // let counter = 0
+        //     // collected.forEach((value) => {
+        //     //     console.log(questions[counter++], value.content);
+        //     //     arr.push(value.content);
+        //     // });
 
-        collector.on('end', async collected => {
-            console.log(`Collected ${collected.size} messages`)
-            console.log(arr);
-            // let counter = 0
-            // collected.forEach((value) => {
-            //     console.log(questions[counter++], value.content);
-            //     arr.push(value.content);
-            // });
-
-            // if (arr[0] != null && arr[1] != null) {
-            //     const allianceStatus = {
-            //         allianceTag: allianceId,
-            //         allianceStatus: arr[0],
-            //         reason: arr[1],
-            //         lastUpdated: new Date().getTime(),
-            //     }
+        //     // if (arr[0] != null && arr[1] != null) {
+        //     //     const allianceStatus = {
+        //     //         allianceTag: allianceId,
+        //     //         allianceStatus: arr[0],
+        //     //         reason: arr[1],
+        //     //         lastUpdated: new Date().getTime(),
+        //     //     }
         
-            //     await allianceSchema.findOneAndUpdate({
-            //         guildId: guildId,
-            //         allianceId: allianceId,
-            //     }, {
+        //     //     await allianceSchema.findOneAndUpdate({
+        //     //         guildId: guildId,
+        //     //         allianceId: allianceId,
+        //     //     }, {
         
-            //         guildId: guildId,
-            //         allianceId: allianceId,
-            //         $push: {
+        //     //         guildId: guildId,
+        //     //         allianceId: allianceId,
+        //     //         $push: {
         
-            //             allianceStatus: allianceStatus
+        //     //             allianceStatus: allianceStatus
         
-            //         }
-            //     }, {
-            //         upsert: true,
-            //     })
+        //     //         }
+        //     //     }, {
+        //     //         upsert: true,
+        //     //     })
 
-        });
+        // });
     }
 };
