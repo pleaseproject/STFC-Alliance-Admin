@@ -26,15 +26,16 @@ module.exports = {
             })
             .then((collected) => {
                 iterations = collected.first();
-                for (i = 0; i < iterations; i++) {
-                    questions.push(`What is the location for this TC event?`);
-                    questions.push(`What time will this event occur?`);
-                    console.log(questions[i]);
-                }
+                // for (i = 0; i < iterations; i++) {
+                //     questions.push(`What is the location for this TC event?`);
+                //     questions.push(`What time will this event occur?`);
+                //     console.log(questions[i]);
+                // }
+                console.log(iterations);
                 //ScheduleCollector();
             })
             .catch((err) => console.log(err));
-            console.log(questions)
+            //console.log(questions)
         function ScheduleCollector() {
 
             let counter = 0;
