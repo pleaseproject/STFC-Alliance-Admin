@@ -32,15 +32,15 @@ module.exports = {
                     questions.push(`What time will this event occur?`);
                     console.log(questions[i]);
                 }
-                message.channel.send(iterationsQuestion)
+                message.channel.send(channelQuestion)
                 message.channel
                     .awaitMessages(filter,  
                         {max: 1, 
                         time: 1000 * 45,
                         errors: [`time`] 
                     })
-                    .then((collected) => {
-                        channelId = collected.first().content
+                    .then((collect) => {
+                        channelId = collect.first().content
                         ScheduleCollector();
                     })
                     .catch((err) => console.log(err));
