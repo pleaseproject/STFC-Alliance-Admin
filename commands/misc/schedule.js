@@ -40,7 +40,9 @@ module.exports = {
                         errors: [`time`] 
                     })
                     .then((collect) => {
-                        channelId = collect.first().content
+                        channelId = collect.first()
+                        channelId = channelId.content
+                        console.log(`HERE IS THE CHANNEL ID: ${channelId}`)
                         ScheduleCollector();
                     })
                     .catch((err) => console.log(err));
