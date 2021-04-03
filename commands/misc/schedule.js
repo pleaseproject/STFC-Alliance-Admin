@@ -19,11 +19,6 @@ module.exports = {
         let counter = 0;
         let filter = m => m.author.id === message.author.id;
 
-        const iterationCollector = new discord.MessageCollector(message.channel, filter, {
-            max: 1,
-            time: 1000 * 45 // 45 seconds per answer?
-        });
-
         message.channel.send(iterationsQuestion)
         message.channel
             .awaitMessages(filter,  
@@ -36,32 +31,37 @@ module.exports = {
                 console.log(iterations);
             })
             .catch((err) => console.log(err));
-
-        const collector = new discord.MessageCollector(message.channel, filter, {
-            max: iterations * 2,
-            time: 1000 * 45 // 45 seconds per answer?
-        });
-        console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
         
-        message.channel.send(questions[counter++]);
-        collector.on('collect', m => {
-            if (counter > questions.length && iterationCounter <= iterations) {
-                counter = 0;
-            }
+        ScheduleCollector();
+        function ScheduleCollector() {
 
-            if (iterationCounter <= iterations) {
-                m.channel.send(questions[counter++]);
-                iterationCounter++;
-            }
-        });
-        
-        collector.on('end', async collected => {
-            collected.forEach((value) => {
-                arr.push(value.content);
+            const collector = new discord.MessageCollector(message.channel, filter, {
+                max: iterations * 2,
+                time: 1000 * 45 // 45 seconds per answer?
             });
-            console.log(`Collected ${collected.size} messages`)
-            console.log(arr); 
-        });
+            console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
+            
+            message.channel.send(questions[counter++]);
+            collector.on('collect', m => {
+                if (counter > questions.length && iterationCounter <= iterations) {
+                    counter = 0;
+                }
+    
+                if (iterationCounter <= iterations) {
+                    m.channel.send(questions[counter++]);
+                    iterationCounter++;
+                }
+            });
+            
+            collector.on('end', async collected => {
+                collected.forEach((value) => {
+                    arr.push(value.content);
+                });
+                console.log(`Collected ${collected.size} messages`)
+                console.log(arr); 
+            });
+    
+        }
 
 
 
