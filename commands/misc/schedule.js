@@ -31,7 +31,7 @@ module.exports = {
                 //     questions.push(`What time will this event occur?`);
                 //     console.log(questions[i]);
                 // }
-                console.log(iterations);
+                console.log(iterations.content);
                 //ScheduleCollector();
             })
             .catch((err) => console.log(err));
