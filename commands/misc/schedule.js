@@ -32,7 +32,7 @@ module.exports = {
                 ScheduleCollector();
             })
             .catch((err) => console.log(err));
-            
+
         function ScheduleCollector() {
 
             const collector = new discord.MessageCollector(message.channel, filter, {
@@ -42,12 +42,11 @@ module.exports = {
             console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
             
             message.channel.send(questions[counter++]);
-            collector.on('collect', m => {
-                if (counter > questions.length && iterationCounter <= iterations) {
-                    counter = 0;
-                }
-    
+            collector.on('collect', m => {    
                 if (iterationCounter <= iterations) {
+                    if (counter > questions.length) {
+                        counter = 0;
+                    }
                     m.channel.send(questions[counter++]);
                     iterationCounter++;
                 }
