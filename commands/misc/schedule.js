@@ -36,17 +36,20 @@ module.exports = {
 
         iterationCollector.on('end', collected => {
             console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
-            message.channel.send(questions[0])
+            message.channel.send(questions[0]);
             collector.on('collect', m => {
-                do {
+                if (iterationCounter <= iterations) {
                     arr.push(m.content);
     
                     m.channel.send(questions[1]);
                     arr.push(m.content);
-    
+                    message.channel.send(questions[0]);
                     iterationCounter++;
-    
-                } while (iterationCounter <= iterations);
+                }
+            });
+            collector.on('end', async collected => {
+                console.log(`Collected ${collected.size} messages`)
+                console.log(arr);
             });
         });
 
