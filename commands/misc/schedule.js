@@ -11,7 +11,8 @@ module.exports = {
         let iterations;
         let channelId;
         let arr = [];
-        var i;
+        let locationArr = [];
+        let timeArr = [];
         const iterationsQuestion = `How many scheduled messages?`;
         const channelQuestion = `What channel should these messages be posted in?`;
         let questions = [];
@@ -27,7 +28,7 @@ module.exports = {
             })
             .then((collected) => {
                 iterations = collected.first();
-                for (i = 0; i < iterations.content; i++) {
+                for (var i = 0; i < iterations.content; i++) {
                     questions.push(`What is the location for this TC event?`);
                     questions.push(`What time will this event occur?`);
                     console.log(questions[i]);
@@ -76,6 +77,17 @@ module.exports = {
                 console.log(`Collected ${collected.size} messages`)
                 console.log(arr); 
             });
+
+            for (var i = 0; i < arr.length; i++) {
+                if ((i + 2) % 2 == 0) {
+                    locationArr.push(arr[i]);
+                } else {
+                    timeArr.push(arr[i]);
+                }
+            }
+
+            console.log(`HERE IS THE LOCATION ARRAY: ${locationArr}`);
+            console.log(`HERE IS THE TIME ARRAY: ${timeArr}`);
     
         }
 
