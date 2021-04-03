@@ -29,10 +29,10 @@ module.exports = {
             .then((collected) => {
                 iterations = collected.first();
                 console.log(iterations);
+                ScheduleCollector();
             })
             .catch((err) => console.log(err));
-        
-        ScheduleCollector();
+            
         function ScheduleCollector() {
 
             const collector = new discord.MessageCollector(message.channel, filter, {
