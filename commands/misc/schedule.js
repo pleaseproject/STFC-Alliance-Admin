@@ -42,8 +42,8 @@ module.exports = {
                     .then((collect) => {
                         channelId = collect.first()
                         channelId = channelId.content.substring(
-                            roleId.lastIndexOf("#") + 1,
-                            roleId.lastIndexOf(">")
+                            channelId.content.lastIndexOf("#") + 1,
+                            channelId.content.lastIndexOf(">")
                         );
                         console.log(`HERE IS THE CHANNEL ID: ${channelId}`)
                         ScheduleCollector();
