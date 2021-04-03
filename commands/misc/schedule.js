@@ -42,6 +42,7 @@ module.exports = {
             
             message.channel.send(questions[counter++]);
             collector.on('collect', m => {    
+                console.log(questions.length)
                 if (iterationCounter <= iterations) {
                     if (counter > questions.length) {
                         counter = 0;
