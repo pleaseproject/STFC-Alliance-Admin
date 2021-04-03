@@ -51,6 +51,8 @@ module.exports = {
                         iterationCounter++;
                     }
                 }
+                console.log(counter);
+                console.log(iterations);
             });
             
             collector.on('end', async collected => {
