@@ -43,7 +43,7 @@ module.exports = {
             message.channel.send(questions[counter++]);
             collector.on('collect', m => {    
                 console.log(`The length of questions is: ${questions.length}`)
-                if (iterationCounter <= iterations) {
+                
                     if (counter > questions.length) {
                         counter = 0;
                         m.channel.send(questions[counter++]);
@@ -53,7 +53,7 @@ module.exports = {
                     iterationCounter++;
                     console.log(`Counter is at: ${counter}`);
                     console.log(`Iterations Counter is at: ${iterationCounter}`);
-                }
+                    if (iterationCounter <= iterations) return;
             });
             
             collector.on('end', async collected => {
