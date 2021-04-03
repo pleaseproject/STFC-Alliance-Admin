@@ -46,9 +46,10 @@ module.exports = {
                 if (iterationCounter <= iterations) {
                     if (counter > questions.length) {
                         counter = 0;
+                    } else {
+                        m.channel.send(questions[counter++]);
+                        iterationCounter++;
                     }
-                    m.channel.send(questions[counter++]);
-                    iterationCounter++;
                 }
             });
             
