@@ -12,7 +12,7 @@ module.exports = {
         let iterationCounter = 1;
         let arr = [];
         const iterationsQuestion = `How many scheduled messages?`
-        const questions = []
+        let questions = [];
         
         let filter = m => m.author.id === message.author.id;
 
