@@ -51,9 +51,9 @@ module.exports = {
                         m.channel.send(questions[counter++]);
                     }
                     iterationCounter++;
+                    console.log(counter);
+                    console.log(iterationCounter);
                 }
-                console.log(counter);
-                console.log(iterationCounter);
             });
             
             collector.on('end', async collected => {
