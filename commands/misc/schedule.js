@@ -28,7 +28,6 @@ module.exports = {
             })
             .then((collected) => {
                 iterations = collected.first();
-                console.log(iterations);
                 ScheduleCollector();
             })
             .catch((err) => console.log(err));
@@ -53,7 +52,7 @@ module.exports = {
                     iterationCounter++;
                 }
                 console.log(counter);
-                console.log(iterationsCounter);
+                console.log(iterationCounter);
             });
             
             collector.on('end', async collected => {
