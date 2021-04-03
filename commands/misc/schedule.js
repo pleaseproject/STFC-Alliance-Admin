@@ -41,19 +41,18 @@ module.exports = {
             });
             console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
             
+            
             collector.on('collect', m => {    
-                console.log(`The length of questions is: ${questions.length}`)
-                if (iterationCounter <= iterations) return;
-
+                if (iterationCounter <= iterations) {
                     if (counter > questions.length) {
                         counter = 0;
-                        m.channel.send(questions[counter++]);
                     } else {
                         m.channel.send(questions[counter++]);
+                        iterationCounter++;
                     }
-                    iterationCounter++;
-                    console.log(`Counter is at: ${counter}`);
-                    console.log(`Iterations Counter is at: ${iterationCounter}`);
+                    console.log(`Here is the current counter level: ${counter}`);
+                    console.log(`Here is the current iteration level: ${iterationCounter}`);    
+                }
             });
             
             collector.on('end', async collected => {
