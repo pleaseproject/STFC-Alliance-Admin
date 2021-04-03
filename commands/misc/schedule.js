@@ -12,10 +12,7 @@ module.exports = {
         let iterationCounter = 1;
         let arr = [];
         const iterationsQuestion = `How many scheduled messages?`
-        const questions = [
-            `What is the location for this TC event?`,
-            `What time will this event occur?`,
-        ]
+        const questions = []
         
         let filter = m => m.author.id === message.author.id;
 
@@ -28,7 +25,10 @@ module.exports = {
             })
             .then((collected) => {
                 iterations = collected.first();
-                
+                for (let i = 0; i < iterations; i++) {
+                    questions.push(`What is the location for this TC event?`);
+                    questions.push(`What time will this event occur?`);
+                }
                 ScheduleCollector();
             })
             .catch((err) => console.log(err));
@@ -44,15 +44,8 @@ module.exports = {
             
             message.channel.send(questions[counter++]);
             collector.on('collect', m => {    
-                if (iterationCounter <= iterations) {
-                    if (counter = 3) {
-                        counter = 0;
-                    } else {
-                        m.channel.send(questions[counter++]);
-                        iterationCounter++;
-                    }
-                    console.log(`Here is the current counter level: ${counter}`);
-                    console.log(`Here is the current iteration level: ${iterationCounter}`);    
+                if (counter < questions.length) {
+                    m.channel.send(questions[counter++])
                 }
             });
             
