@@ -75,8 +75,15 @@ module.exports = {
                     arr.push(value.content);
                 });
                 console.log(`Collected ${collected.size} messages`)
-                console.log(arr); 
+                console.log(arr);
+
+                ArraySplit();
+
             });
+    
+        }
+
+        function ArraySplit() {
 
             for (var i = 0; i < arr.length; i++) {
                 if ((i + 2) % 2 == 0) {
@@ -88,9 +95,8 @@ module.exports = {
 
             console.log(`HERE IS THE LOCATION ARRAY: ${locationArr}`);
             console.log(`HERE IS THE TIME ARRAY: ${timeArr}`);
-    
-        }
 
+        }
 
 
         // collector.on('end', async collected => {
