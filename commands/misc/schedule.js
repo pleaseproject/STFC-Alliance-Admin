@@ -46,13 +46,14 @@ module.exports = {
                 if (iterationCounter <= iterations) {
                     if (counter > questions.length) {
                         counter = 0;
+                        m.channel.send(questions[counter++]);
                     } else {
                         m.channel.send(questions[counter++]);
-                        iterationCounter++;
                     }
+                    iterationCounter++;
                 }
                 console.log(counter);
-                console.log(iterations);
+                console.log(iterationsCounter);
             });
             
             collector.on('end', async collected => {
