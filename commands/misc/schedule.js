@@ -25,35 +25,42 @@ module.exports = {
         });
 
         message.channel.send(iterationsQuestion)
-        iterationCollector.on('collect', m => {
-            iterations = m.content;
-        });
+        message.channel
+            .awaitMessages(filter,  
+                {max: 1, 
+                time: 1000 * 45,
+                errors: [`time`] 
+            })
+            .then((collected) => {
+                iterations = collected.first();
+                console.log(iterations);
+            })
+            .catch((err) => console.log(err));
 
         const collector = new discord.MessageCollector(message.channel, filter, {
             max: iterations * 2,
             time: 1000 * 45 // 45 seconds per answer?
         });
+        console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
+        
+        message.channel.send(questions[counter++]);
+        collector.on('collect', m => {
+            if (counter > questions.length && iterationCounter <= iterations) {
+                counter = 0;
+            }
 
-        iterationCollector.on('end', collected => {
-            console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
-            message.channel.send(questions[counter++]);
-            collector.on('collect', m => {
-                if (counter > questions.length && iterationCounter <= iterations) {
-                    counter = 0;
-                }
-
-                if (iterationCounter <= iterations) {
-                    m.channel.send(questions[counter++]);
-                    iterationCounter++;
-                }
+            if (iterationCounter <= iterations) {
+                m.channel.send(questions[counter++]);
+                iterationCounter++;
+            }
+        });
+        
+        collector.on('end', async collected => {
+            collected.forEach((value) => {
+                arr.push(value.content);
             });
-            collector.on('end', async collected => {
-                collected.forEach((value) => {
-                    arr.push(value.content);
-                });
-                console.log(`Collected ${collected.size} messages`)
-                console.log(arr); 
-            });
+            console.log(`Collected ${collected.size} messages`)
+            console.log(arr); 
         });
 
 
