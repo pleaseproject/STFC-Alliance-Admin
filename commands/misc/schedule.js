@@ -9,10 +9,11 @@ module.exports = {
     run: async ({ message, args }) => {
         const guildId = message.guild.id;
         let iterations;
-        let iterationCounter = 1;
+        let channelId;
         let arr = [];
         var i;
-        const iterationsQuestion = `How many scheduled messages?`
+        const iterationsQuestion = `How many scheduled messages?`;
+        const channelQuestion = `What channel should these messages be posted in?`;
         let questions = [];
         
         let filter = m => m.author.id === message.author.id;
@@ -31,14 +32,27 @@ module.exports = {
                     questions.push(`What time will this event occur?`);
                     console.log(questions[i]);
                 }
-                ScheduleCollector();
+                message.channel.send(iterationsQuestion)
+                message.channel
+                    .awaitMessages(filter,  
+                        {max: 1, 
+                        time: 1000 * 45,
+                        errors: [`time`] 
+                    })
+                    .then((collected) => {
+                        channelId = collected.first().content
+                        ScheduleCollector();
+                    })
+                    .catch((err) => console.log(err));
             })
             .catch((err) => console.log(err));
+            console.log(channelId);
+
         function ScheduleCollector() {
 
             let counter = 0;
             const collector = new discord.MessageCollector(message.channel, filter, {
-                max: iterations * 2,
+                max: questions.length,
                 time: 1000 * 45 // 45 seconds per answer?
             });
             console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
