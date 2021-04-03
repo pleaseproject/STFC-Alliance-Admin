@@ -16,7 +16,7 @@ module.exports = {
             `What is the location for this TC event?`,
             `What time will this event occur?`,
         ]
-        let counter = 0;
+        
         let filter = m => m.author.id === message.author.id;
 
         message.channel.send(iterationsQuestion)
@@ -28,20 +28,21 @@ module.exports = {
             })
             .then((collected) => {
                 iterations = collected.first();
-                message.channel.send(questions[counter++]);
+                
                 ScheduleCollector();
             })
             .catch((err) => console.log(err));
 
         function ScheduleCollector() {
 
+            let counter = 0;
             const collector = new discord.MessageCollector(message.channel, filter, {
                 max: iterations * 2,
                 time: 1000 * 45 // 45 seconds per answer?
             });
             console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
             
-            
+            message.channel.send(questions[counter++]);
             collector.on('collect', m => {    
                 if (iterationCounter <= iterations) {
                     if (counter > questions.length) {
