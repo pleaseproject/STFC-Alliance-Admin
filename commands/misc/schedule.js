@@ -11,6 +11,7 @@ module.exports = {
         let iterations;
         let iterationCounter = 1;
         let arr = [];
+        var i;
         const iterationsQuestion = `How many scheduled messages?`
         let questions = [];
         
@@ -25,7 +26,7 @@ module.exports = {
             })
             .then((collected) => {
                 iterations = collected.first();
-                for (let i = 0; i < iterations; i++) {
+                for (i = 0; i < iterations; i++) {
                     questions.push(`What is the location for this TC event?`);
                     questions.push(`What time will this event occur?`);
                 }
