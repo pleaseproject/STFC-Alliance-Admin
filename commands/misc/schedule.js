@@ -10,6 +10,7 @@ module.exports = {
         const guildId = message.guild.id;
         let iterations;
         let iterationCounter = 1;
+        let arr = [];
         const iterationsQuestion = `How many scheduled messages?`
         const questions = [
             `What is the location for this TC event?`,
