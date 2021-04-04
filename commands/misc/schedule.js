@@ -143,7 +143,7 @@ module.exports = {
             console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
 
             const targetDate = momentTimezone.tz(
-                `${currentDate} ${timeArr[0]} ${clockType}`,
+                `${currentDate} ${momentTimezone(timeArr[0]).subtract(1, 'hours')} ${clockType}`,
                 'YYYY-MM-DD HH:mm A',
                 timeZone
             );
@@ -155,39 +155,5 @@ module.exports = {
                 content: 'test',
             }).save()
         }
-        // collector.on('end', async collected => {
-        //     console.log(`Collected ${collected.size} messages`)
-        //     console.log(arr);
-        //     // let counter = 0
-        //     // collected.forEach((value) => {
-        //     //     console.log(questions[counter++], value.content);
-        //     //     arr.push(value.content);
-        //     // });
-
-        //     // if (arr[0] != null && arr[1] != null) {
-        //     //     const allianceStatus = {
-        //     //         allianceTag: allianceId,
-        //     //         allianceStatus: arr[0],
-        //     //         reason: arr[1],
-        //     //         lastUpdated: new Date().getTime(),
-        //     //     }
-        
-        //     //     await allianceSchema.findOneAndUpdate({
-        //     //         guildId: guildId,
-        //     //         allianceId: allianceId,
-        //     //     }, {
-        
-        //     //         guildId: guildId,
-        //     //         allianceId: allianceId,
-        //     //         $push: {
-        
-        //     //             allianceStatus: allianceStatus
-        
-        //     //         }
-        //     //     }, {
-        //     //         upsert: true,
-        //     //     })
-
-        // });
     }
 };
