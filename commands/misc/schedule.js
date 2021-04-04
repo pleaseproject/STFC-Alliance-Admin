@@ -1,3 +1,4 @@
+const scheduledSchema = require('../../schemas/scheduleSchema');
 const discord = require('discord.js');
 
 module.exports = {
