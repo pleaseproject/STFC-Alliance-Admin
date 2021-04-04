@@ -136,7 +136,7 @@ module.exports = {
         }
 
         function StoreData() {
-            console.log(`CURRENT DATE AND TIME IS: ${momentTimezone.utc()}`);
+            console.log(`CURRENT DATE AND TIME IS: ${momentTimezone.utc().format()}`);
         }
         // collector.on('end', async collected => {
         //     console.log(`Collected ${collected.size} messages`)
