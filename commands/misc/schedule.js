@@ -136,8 +136,24 @@ module.exports = {
         }
 
         function StoreData() {
-            console.log(`CURRENT DATE AND TIME IS: ${momentTimezone.utc().format('YYYY/MM/DD')}`);
-            console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`)
+            const timeZone = 'Etc/UTC';
+            clockType = 'PM';
+            const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
+            console.log(`CURRENT DATE AND TIME IS: ${currentDate}`);
+            console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
+
+            const targetDate = momentTimezone.tz(
+                `${currentDate} ${timeArr[0]} ${clockType}`,
+                'YYYY-MM-DD HH:mm A',
+                timeZone
+            );
+
+            await new scheduledSchema({
+                date: targetDate.valueOf(),
+                guildId: guildId,
+                channelId: channelId,
+                content: 'test',
+            }).save()
         }
         // collector.on('end', async collected => {
         //     console.log(`Collected ${collected.size} messages`)
