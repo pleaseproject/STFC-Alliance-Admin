@@ -132,6 +132,8 @@ module.exports = {
 
             console.log(`HERE IS THE LOCATION ARRAY: ${locationArr}`);
             console.log(`HERE IS THE TIME ARRAY: ${timeArr}`);
+            var testTime = momentTimezone(timeArr[0]).subtract(1, 'hours');
+            console.log(`HERE IS THE TIME TO BE SCHEDULED: ${testTime}`);
 
         }
 
@@ -143,7 +145,7 @@ module.exports = {
             console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
 
             const targetDate = momentTimezone.tz(
-                `${currentDate} ${momentTimezone(timeArr[0]).subtract(1, 'hours')} ${clockType}`,
+                `${currentDate} ${timeArr[0]} ${clockType}`,
                 'YYYY-MM-DD HH:mm A',
                 timeZone
             );
