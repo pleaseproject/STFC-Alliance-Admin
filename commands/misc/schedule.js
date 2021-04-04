@@ -135,7 +135,7 @@ module.exports = {
 
         }
 
-        function StoreData() {
+        async function StoreData() {
             const timeZone = 'Etc/UTC';
             clockType = 'PM';
             const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
