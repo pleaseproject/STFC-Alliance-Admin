@@ -137,6 +137,7 @@ module.exports = {
 
         function StoreData() {
             console.log(`CURRENT DATE AND TIME IS: ${momentTimezone.utc().format()}`);
+            console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz.zone('CST').format()}`)
         }
         // collector.on('end', async collected => {
         //     console.log(`Collected ${collected.size} messages`)
