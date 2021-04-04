@@ -1,4 +1,5 @@
 const scheduledSchema = require('../../schemas/scheduleSchema');
+const momentTimezone = require('moment-timezone')
 const discord = require('discord.js');
 
 module.exports = {
@@ -113,6 +114,8 @@ module.exports = {
 
                 ArraySplit();
 
+                StoreData();
+
             });
     
         }
@@ -132,7 +135,9 @@ module.exports = {
 
         }
 
-
+        function StoreData() {
+            console.log(`CURRENT DATE AND TIME IS: ${momentTimezone.utc()}`);
+        }
         // collector.on('end', async collected => {
         //     console.log(`Collected ${collected.size} messages`)
         //     console.log(arr);
