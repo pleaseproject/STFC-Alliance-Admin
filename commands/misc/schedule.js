@@ -41,101 +41,12 @@ module.exports = {
     
         checkForPosts()
     },
+
     run: async ({ message, args }) => {
+
         const guildId = message.guild.id;
-        let iterations;
         let channelId;
-        let arr = [];
-        let locationArr = [];
-        let timeArr = [];
-        const iterationsQuestion = `How many scheduled messages?`;
-        const channelQuestion = `What channel should these messages be posted in?`;
-        let questions = [];
-        
-        let filter = m => m.author.id === message.author.id;
-
-        message.channel.send(iterationsQuestion)
-        message.channel
-            .awaitMessages(filter,  
-                {max: 1, 
-                time: 1000 * 45,
-                errors: [`time`] 
-            })
-            .then((collected) => {
-                iterations = collected.first();
-                for (var i = 0; i < iterations.content; i++) {
-                    questions.push(`What is the location for this TC event?`);
-                    questions.push(`What time will this event occur?`);
-                    console.log(questions[i]);
-                }
-                message.channel.send(channelQuestion)
-                message.channel
-                    .awaitMessages(filter,  
-                        {max: 1, 
-                        time: 1000 * 45,
-                        errors: [`time`] 
-                    })
-                    .then((collect) => {
-                        channelId = collect.first()
-                        channelId = channelId.content.substring(
-                            channelId.content.lastIndexOf("#") + 1,
-                            channelId.content.lastIndexOf(">")
-                        );
-                        console.log(`HERE IS THE CHANNEL ID: ${channelId}`)
-                        ScheduleCollector();
-                    })
-                    .catch((err) => console.log(err));
-            })
-            .catch((err) => console.log(err));
-            console.log(channelId);
-
-        function ScheduleCollector() {
-
-            let counter = 0;
-            const collector = new discord.MessageCollector(message.channel, filter, {
-                max: questions.length,
-                time: 1000 * 45 // 45 seconds per answer?
-            });
-            console.log(`Question Asked: ${iterationsQuestion} Iterations Received: ${iterations}`);
-            
-            message.channel.send(questions[counter++]);
-            collector.on('collect', m => {    
-                if (counter < questions.length) {
-                    m.channel.send(questions[counter++])
-                }
-            });
-            
-            collector.on('end', async collected => {
-                collected.forEach((value) => {
-                    arr.push(value.content);
-                });
-                console.log(`Collected ${collected.size} messages`)
-                console.log(arr);
-
-                ArraySplit();
-
-                StoreData();
-
-            });
-    
-        }
-
-        function ArraySplit() {
-
-            for (var i = 0; i < arr.length; i++) {
-                if ((i + 2) % 2 == 0) {
-                    locationArr.push(arr[i]);
-                } else {
-                    timeArr.push(arr[i]);
-                }
-            }
-
-            console.log(`HERE IS THE LOCATION ARRAY: ${locationArr}`);
-            console.log(`HERE IS THE TIME ARRAY: ${timeArr}`);
-            var testTime = momentTimezone(timeArr[0]).subtract(1, 'hours');
-            console.log(`HERE IS THE TIME TO BE SCHEDULED: ${testTime}`);
-
-        }
+        let content;
 
         async function StoreData() {
             const timeZone = 'Etc/UTC';
@@ -157,5 +68,8 @@ module.exports = {
                 content: 'test',
             }).save()
         }
+
+
     }
-};
+
+}
