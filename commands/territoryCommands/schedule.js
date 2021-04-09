@@ -103,7 +103,7 @@ module.exports = {
           'YYYY-MM-DD HH:mm A'
         );
         timeArr[0] = targetDate.subtract(30, 'minutes')
-        timeArr[1] = targetDate.subtract(30, 'minutes')
+        timeArr[1] = targetDate.subtract(1, 'hour')
         console.log(timeArr);
         for (var i = 0; i < timeArr.length; i++) {
           await new scheduledSchema({
