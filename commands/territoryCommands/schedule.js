@@ -99,14 +99,12 @@ module.exports = {
         console.log(`CURRENT DATE AND TIME IS: ${currentDate}`);
         //console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
 
-        let targetDate = momentTimezone.tz(
+        let targetDate = momentTimezone.utc(
           `${currentDate} ${results.timeUTC} ${results.clockType}`,
-          'YYYY-MM-DD hh:mm A',
-          'America/Chicago'
-          //timeZone
+          'YYYY-MM-DD HH:mm A'
         );
 
-        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate.valueOf()}`);
+        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate}`);
         //targetDate = targetDate.subtract(1, 'hour');
         
         await new scheduledSchema({
