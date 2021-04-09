@@ -1,16 +1,5 @@
 const scheduledMessageChannelSchema = require('../../schemas/scheduledMessageChannelSchema');
 
-const cache = new Map();
-
-const loadData = async () => {
-    const results = await scheduledMessageChannelSchema.find();
-
-    for (const result of results) {
-        cache.set(result._id, result.channelId);
-    }
-}
-loadData();
-
 module.exports = {
     requiredPermissions: ['ADMINISTRATOR'],
     category: 'Util',
