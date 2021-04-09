@@ -1,4 +1,5 @@
 const scheduledSchema = require('../../schemas/scheduleSchema');
+const territorySchema = require('../../schemas/territorySchema');
 const momentTimezone = require('moment-timezone')
 const discord = require('discord.js');
 
@@ -6,7 +7,7 @@ module.exports = {
     name: 'schedule',
     description: 'Allows a user to schedule messages to be sent as certain times',
     category: 'Util',
-    minArgs: 0,
+    minArgs: 1,
 
     init: (client) => {
         const checkForPosts = async () => {
@@ -47,10 +48,18 @@ module.exports = {
         const guildId = message.guild.id;
         let channelId;
         let content;
+        
+
+        async function LoadTerritoryData() {
+            const results = await territorySchema.findOne({
+                guildId,
+                allianceId,
+            })
+    
+        }
 
         async function StoreData() {
             const timeZone = 'Etc/UTC';
-            clockType = 'PM';
             const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
             console.log(`CURRENT DATE AND TIME IS: ${currentDate}`);
             console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
