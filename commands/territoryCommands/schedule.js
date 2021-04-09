@@ -48,7 +48,7 @@ module.exports = {
 
       const guildId = message.guild.id;
       let channelId;
-      let content;
+      let content = [];
       let questions = ['What is the territory name?'];
       let arr = [];
       
@@ -93,7 +93,8 @@ module.exports = {
         const results = await territorySchema.findOne({
           system
         });
-        content = `@everyone We have a territory event in ${results.system} in 30 minutes. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`
+        content[0] = `@everyone We have a territory event in ${results.system} in 1 Hour. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`;
+        content[1] = `@everyone We have a territory event in ${results.system} in 30 Minutes. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`;
         const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
 
         let targetDate = momentTimezone.utc(
@@ -110,7 +111,7 @@ module.exports = {
             date: timeArr[i].valueOf(),
             guildId: guildId,
             channelId: channelId,
-            content: content,
+            content: content[i],
           }).save();
         }
       }
