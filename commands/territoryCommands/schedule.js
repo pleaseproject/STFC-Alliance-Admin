@@ -52,9 +52,10 @@ module.exports = {
       let questions = ['What is the territory name?'];
       
       let filter = m => m.author.id === message.author.id;
-      channelId = args[0].content.substring(
-          args[0].content.lastIndexOf("#") + 1,
-          args[0].content.lastIndexOf(">")
+      channelId = args[0];
+      channelId = channelId.content.substring(
+          channelId.content.lastIndexOf("#") + 1,
+          channelId.content.lastIndexOf(">")
       );
 
       ScheduleCollector();
