@@ -50,14 +50,14 @@ module.exports = {
       let channelId;
       let content;
       let questions = ['What is the territory name?'];
+      let arr = [];
       
       let filter = m => m.author.id === message.author.id;
       channelId = args[0];
-      console.log(channelId)
-      // channelId = channelId.content.substring(
-      //     channelId.content.lastIndexOf("#") + 1,
-      //     channelId.content.lastIndexOf(">")
-      // );
+      channelId = channelId.substring(
+          channelId.lastIndexOf("#") + 1,
+          channelId.lastIndexOf(">")
+      );
 
       ScheduleCollector();
 
