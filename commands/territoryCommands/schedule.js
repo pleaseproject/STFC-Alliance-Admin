@@ -53,10 +53,11 @@ module.exports = {
       
       let filter = m => m.author.id === message.author.id;
       channelId = args[0];
-      channelId = channelId.content.substring(
-          channelId.content.lastIndexOf("#") + 1,
-          channelId.content.lastIndexOf(">")
-      );
+      console.log(channelId)
+      // channelId = channelId.content.substring(
+      //     channelId.content.lastIndexOf("#") + 1,
+      //     channelId.content.lastIndexOf(">")
+      // );
 
       ScheduleCollector();
 
