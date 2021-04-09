@@ -89,7 +89,7 @@ module.exports = {
       }
 
       async function StoreData() {
-        let system = args[0];
+        let system = arr[0];
         const results = await territorySchema.findOne({
             system
         });
