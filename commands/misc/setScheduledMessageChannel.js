@@ -3,6 +3,7 @@ const scheduledMessageChannelSchema = require('../../schemas/scheduledMessageCha
 module.exports = {
     requiredPermissions: ['ADMINISTRATOR'],
     category: 'Util',
+    name: 'setScheduledMessageChannel',
     aliases: ['setsch', ],
     run: async (message) => {
     const { guild, channel } = message
