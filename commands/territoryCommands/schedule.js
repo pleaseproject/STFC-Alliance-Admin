@@ -100,7 +100,7 @@ module.exports = {
         //console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
 
         let targetDate = momentTimezone.utc(
-          `${currentDate} ${results.timeUTC} ${results.clockType}`,
+          `${currentDate} ${results.milTimeUTC}`,
           'YYYY-MM-DD HH:mm A'
         );
 
