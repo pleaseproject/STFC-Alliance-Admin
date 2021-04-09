@@ -102,8 +102,16 @@ module.exports = {
           `${currentDate} ${results.milTimeUTC}`,
           'YYYY-MM-DD HH:mm A'
         );
-        timeArr[0] = targetDate.subtract(1, 'hour')
-        timeArr[1] = targetDate.add(30, 'minutes')
+        let timeArr = [
+          momentTimezone.utc(
+            `${currentDate} ${results.milTimeUTC}`,
+          'YYYY-MM-DD HH:mm A'
+          ).subtract(1, 'hour'),
+          momentTimezone.utc(
+            `${currentDate} ${results.milTimeUTC}`,
+          'YYYY-MM-DD HH:mm A'
+          ).subtract(30, 'minutes')
+        ]
         console.log(timeArr);
         for (var i = 0; i < timeArr.length; i++) {
           await new scheduledSchema({
