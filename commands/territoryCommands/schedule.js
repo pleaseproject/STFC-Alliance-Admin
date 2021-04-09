@@ -106,7 +106,7 @@ module.exports = {
           //timeZone
         );
 
-        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate.valueOf}`);
+        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate.valueOf()}`);
         //targetDate = targetDate.subtract(1, 'hour');
         
         await new scheduledSchema({
