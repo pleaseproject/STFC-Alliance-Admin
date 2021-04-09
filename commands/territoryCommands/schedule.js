@@ -90,8 +90,8 @@ module.exports = {
       }
 
       async function StoreData() {
-        arr[0] = arr[0].toLowerCase();
-        let system = arr[0].charAt(0).toUpperCase() + arr[0].slice[1];
+        let tempSystem = arr[0].toLowerCase();
+        let system = tempSystem.charAt(0).toUpperCase() + tempSystem.slice[1];
         const results = await territorySchema.findOne({
           system
         });
