@@ -93,6 +93,7 @@ module.exports = {
         const results = await territorySchema.findOne({
             system
         });
+        content = `@everyone We have a territory event in ${results.system} in 30 minutes. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`
         const timeZone = 'Etc/UTC';
         const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
         console.log(`CURRENT DATE AND TIME IS: ${currentDate}`);
@@ -108,7 +109,7 @@ module.exports = {
             date: targetDate.valueOf(),
             guildId: guildId,
             channelId: channelId,
-            content: 'test',
+            content: content,
         }).save()
       }
 
