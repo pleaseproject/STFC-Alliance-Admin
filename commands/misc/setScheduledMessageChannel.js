@@ -37,7 +37,3 @@ module.exports = {
         message.reply('Scheduled Message Channel Set');
     },
 }
-
-module.exports.getChannelId = (guildId) => {
-  return cache.get(guildId);
-}
