@@ -103,7 +103,7 @@ module.exports = {
             `${currentDate} ${results.timeUTC} ${results.clockType}`,
             'YYYY-MM-DD HH:mm A',
             timeZone
-        );
+        ).subtract(1, 'hours');
 
         await new scheduledSchema({
             date: targetDate.valueOf(),
