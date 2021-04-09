@@ -5,7 +5,7 @@ const reqString = {
     required: true,
 }
 
-const scheduleSchema = mongoose.Schema({
+const scheduledSchema = mongoose.Schema({
     date: {
         type: Date,
         required: true,
@@ -15,4 +15,4 @@ const scheduleSchema = mongoose.Schema({
     content: reqString,
 })
   
-  module.exports = mongoose.model('scheduled-messages', scheduleSchema)
+  module.exports = mongoose.model('scheduled-messages', scheduledSchema)

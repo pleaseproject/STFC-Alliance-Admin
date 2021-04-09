@@ -1,4 +1,4 @@
-const scheduledSchema = require('../../schemas/scheduleSchema');
+const scheduledSchema = require('../../schemas/scheduledSchema');
 const territorySchema = require('../../schemas/territorySchema');
 const momentTimezone = require('moment-timezone')
 const discord = require('discord.js');
@@ -97,7 +97,7 @@ module.exports = {
         const timeZone = 'Etc/UTC';
         const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
         console.log(`CURRENT DATE AND TIME IS: ${currentDate}`);
-        console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
+        //console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
 
         let targetDate = momentTimezone.tz(
           `${currentDate} ${results.timeUTC} ${results.clockType}`,
@@ -105,6 +105,8 @@ module.exports = {
           'America/Chicago'
           //timeZone
         );
+
+        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate}`);
         //targetDate = targetDate.subtract(1, 'hour');
         
         await new scheduledSchema({
