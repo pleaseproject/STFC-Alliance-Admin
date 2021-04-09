@@ -11,4 +11,4 @@ const scheduledMessageChannelSchema = new mongoose.Schema({
   channelId: reqString,
 })
 
-module.exports = mongoose.model('welcome-channel', scheduledMessageChannelSchema)
+module.exports = mongoose.model('sheduled-message-channel', scheduledMessageChannelSchema)
