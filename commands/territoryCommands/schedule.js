@@ -104,7 +104,7 @@ module.exports = {
           'YYYY-MM-DD HH:mm A',
           timeZone
         );
-        targetDate = targetDate.subtract(1, 'hours');
+        targetDate = targetDate.subtract(1, 'hour');
         
         await new scheduledSchema({
           date: targetDate.valueOf(),
