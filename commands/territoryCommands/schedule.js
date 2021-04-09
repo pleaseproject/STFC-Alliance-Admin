@@ -102,13 +102,9 @@ module.exports = {
           `${currentDate} ${results.milTimeUTC}`,
           'YYYY-MM-DD HH:mm A'
         );
-        timeArr[0] = targetDate.subtract(1, 'hours')
-        console.log(`HERE IS THE TARGET DATE AFTER 1 HOUR SUBTRACTION: ${targetDate}`)
-        console.log(`HERE IS THE TIMEARR VALUE AFTER 1 HOUR SUBTRACTION: ${timeArr[0]}`)
+        timeArr[0] = targetDate.subtract(30, 'minutes')
         timeArr[1] = targetDate.subtract(30, 'minutes')
-        console.log(`HERE IS THE TARGET DATE AFTER 30 MINUTE SUBTRACTION: ${targetDate}`)
-        console.log(`HERE IS THE TIMEARR VALUE AFTER 30 MINUTE SUBTRACTION: ${timeArr[1]}`)
-
+        console.log(timeArr);
         for (var i = 0; i < timeArr.length; i++) {
           await new scheduledSchema({
             date: timeArr[i].valueOf(),
