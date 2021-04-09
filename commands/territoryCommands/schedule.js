@@ -94,25 +94,25 @@ module.exports = {
           system
         });
         content = `@everyone We have a territory event in ${results.system} in 30 minutes. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`
-        const timeZone = 'Etc/UTC';
         const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
-        console.log(`CURRENT DATE AND TIME IS: ${currentDate}`);
-        //console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
 
         let targetDate = momentTimezone.utc(
           `${currentDate} ${results.milTimeUTC}`,
           'YYYY-MM-DD HH:mm A'
         );
+        let timeArr = [
+          targetDate.subtract(1, 'hours'),
+          targetDate.subtract(30, 'minutes')
+        ];
 
-        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate}`);
-        targetDate = targetDate.subtract(1, 'hours');
-        
-        await new scheduledSchema({
-          date: targetDate.valueOf(),
-          guildId: guildId,
-          channelId: channelId,
-          content: content,
-        }).save()
+        for (var i = 0; i < timeArr.length; i++) {
+          await new scheduledSchema({
+            date: timeArr[i].valueOf(),
+            guildId: guildId,
+            channelId: channelId,
+            content: content,
+          }).save();
+        }
       }
 
   }
