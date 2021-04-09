@@ -49,6 +49,7 @@ module.exports = {
       const guildId = message.guild.id;
       let channelId;
       let content = [];
+      let timeArr = [];
       let questions = ['What is the territory name?'];
       let arr = [];
       
@@ -101,10 +102,8 @@ module.exports = {
           `${currentDate} ${results.milTimeUTC}`,
           'YYYY-MM-DD HH:mm A'
         );
-        let timeArr = [
-          targetDate.subtract(1, 'hours'),
-          targetDate.subtract(30, 'minutes')
-        ];
+        timeArr[0] = targetDate.subtract(1, 'hours'),
+        timeArr[1] = targetDate.subtract(30, 'minutes')
 
         for (var i = 0; i < timeArr.length; i++) {
           await new scheduledSchema({
