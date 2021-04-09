@@ -17,7 +17,7 @@ module.exports = {
     aliases: ['setsch', ],
     run: async (message) => {
     const { guild, channel } = message
-
+    console.log(`HERE IS THE CHANNEL ID: ${channel.id}`)
     await scheduledMessageChannelSchema.findOneAndUpdate(
       {
         _id: guild.id,
