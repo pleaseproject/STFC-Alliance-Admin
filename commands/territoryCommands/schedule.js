@@ -102,7 +102,8 @@ module.exports = {
         let targetDate = momentTimezone.tz(
           `${currentDate} ${results.timeUTC} ${results.clockType}`,
           'YYYY-MM-DD HH:mm A',
-          timeZone
+          'America/Chicago'
+          //timeZone
         );
         //targetDate = targetDate.subtract(1, 'hour');
         
