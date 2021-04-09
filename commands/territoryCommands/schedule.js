@@ -101,12 +101,12 @@ module.exports = {
 
         let targetDate = momentTimezone.tz(
           `${currentDate} ${results.timeUTC} ${results.clockType}`,
-          'YYYY-MM-DD HH:mm A',
+          'YYYY-MM-DD hh:mm A',
           'America/Chicago'
           //timeZone
         );
 
-        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate}`);
+        console.log(`HERE IS THE STORED TARGET DATE: ${targetDate.valueOf}`);
         //targetDate = targetDate.subtract(1, 'hour');
         
         await new scheduledSchema({
