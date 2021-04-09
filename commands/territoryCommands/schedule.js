@@ -91,7 +91,7 @@ module.exports = {
       async function StoreData() {
         let system = arr[0];
         const results = await territorySchema.findOne({
-            system
+          system
         });
         content = `@everyone We have a territory event in ${results.system} in 30 minutes. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`
         const timeZone = 'Etc/UTC';
@@ -99,17 +99,18 @@ module.exports = {
         console.log(`CURRENT DATE AND TIME IS: ${currentDate}`);
         console.log(`CURRENT DATE AND TIME IN CST IS: ${momentTimezone.tz('America/Chicago').format()}`);
 
-        const targetDate = momentTimezone.tz(
-            `${currentDate} ${results.timeUTC} ${results.clockType}`,
-            'YYYY-MM-DD HH:mm A',
-            timeZone
-        ).subtract(1, 'hours');
-
+        let targetDate = momentTimezone.tz(
+          `${currentDate} ${results.timeUTC} ${results.clockType}`,
+          'YYYY-MM-DD HH:mm A',
+          timeZone
+        );
+        targetDate = targetDate.subtract(1, 'hours');
+        
         await new scheduledSchema({
-            date: targetDate.valueOf(),
-            guildId: guildId,
-            channelId: channelId,
-            content: content,
+          date: targetDate.valueOf(),
+          guildId: guildId,
+          channelId: channelId,
+          content: content,
         }).save()
       }
 
