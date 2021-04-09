@@ -94,8 +94,8 @@ module.exports = {
         const results = await territorySchema.findOne({
           system
         });
-        content[0] = `@everyone We have a territory event in ${results.system} in 1 Hour. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`;
-        content[1] = `@everyone We have a territory event in ${results.system} in 30 Minutes. Please hold off on armadas and prepare to send ships. This event will last ${results.duration}.`;
+        content[0] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in 1 Hour. 30 Minutes before please hold off on armadas and prepare to send ships. This event will last \`\`${results.duration} Minutes\`\`.`;
+        content[1] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in 30 Minutes. Please hold off on armadas and begin sending ships. This event will last \`\`${results.duration} Minutes\`\`.`;
         const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
 
         let targetDate = momentTimezone.utc(
