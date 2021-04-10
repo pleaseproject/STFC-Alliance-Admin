@@ -100,37 +100,41 @@ module.exports = {
         content[0] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in 1 Hour. 30 Minutes before please hold off on armadas and prepare to send ships. This event will last \`\`${results.duration} Minutes\`\`.`;
         content[1] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in 30 Minutes. Please hold off on armadas and begin sending ships. This event will last \`\`${results.duration} Minutes\`\`.`;
         const currentDate = momentTimezone.utc().format('YYYY/MM/DD');
-
-        let targetDate = momentTimezone.utc(
-          `${currentDate} ${results.milTimeUTC}`,
-          'YYYY-MM-DD HH:mm A'
-        );
-        let timeArr = [
-          momentTimezone.utc(
+        let timeArr = [];
+        if (currentDay != results.day) {
+          timeArr.push(
+            momentTimezone.utc(
+              `${currentDate} ${results.milTimeUTC}`,
+              'YYYY-MM-DD HH:mm A'
+            ).subtract(1, 'hour').add(1, 'day'));
+          timeArr.push(
+            momentTimezone.utc(
             `${currentDate} ${results.milTimeUTC}`,
-          'YYYY-MM-DD HH:mm A'
-          ).subtract(1, 'hour'),
-          momentTimezone.utc(
+            'YYYY-MM-DD HH:mm A'
+          ).subtract(30, 'minutes').add(1, 'day'));
+        } else {
+          timeArr.push(
+            momentTimezone.utc(
+              `${currentDate} ${results.milTimeUTC}`,
+              'YYYY-MM-DD HH:mm A'
+            ).subtract(1, 'hour').add(1, 'day'));
+          timeArr.push(
+            momentTimezone.utc(
             `${currentDate} ${results.milTimeUTC}`,
-          'YYYY-MM-DD HH:mm A'
-          ).subtract(30, 'minutes')
-        ]
-        console.log(timeArr);
-        // for (var i = 0; i < timeArr.length; i++) {
-        //   await new scheduledSchema({
-        //     date: timeArr[i].valueOf(),
-        //     guildId: guildId,
-        //     channelId: channelId,
-        //     content: content[i],
-        //   }).save();
-        // }
-        console.log(`HERE IS THE CURRENT DAY: ${currentDay}`);
-        while (currentDay != results.day) {
-
-          currentDay = momentTimezone.utc().add(1, 'day').format('dddd');
-          console.log(`HERE IS THE NEW CURRENT DAY: ${currentDay}`);
-
+            'YYYY-MM-DD HH:mm A'
+          ).subtract(30, 'minutes').add(1, 'day'));
         }
+        
+        console.log(timeArr);
+        for (var i = 0; i < timeArr.length; i++) {
+          await new scheduledSchema({
+            date: timeArr[i].valueOf(),
+            guildId: guildId,
+            channelId: channelId,
+            content: content[i],
+          }).save();
+        }
+        console.log(`HERE IS THE CURRENT DAY: ${currentDay}`);
 
       }
 
