@@ -90,6 +90,7 @@ module.exports = {
       }
 
       async function StoreData() {
+        let currentDay = momentTimezone.utc().format('dddd');
         let tempSystem = arr[0].toLowerCase();
         let system = tempSystem.charAt(0).toUpperCase() + tempSystem.slice(1);
         const results = await territorySchema.findOne({
@@ -115,14 +116,22 @@ module.exports = {
           ).subtract(30, 'minutes')
         ]
         console.log(timeArr);
-        for (var i = 0; i < timeArr.length; i++) {
-          await new scheduledSchema({
-            date: timeArr[i].valueOf(),
-            guildId: guildId,
-            channelId: channelId,
-            content: content[i],
-          }).save();
+        // for (var i = 0; i < timeArr.length; i++) {
+        //   await new scheduledSchema({
+        //     date: timeArr[i].valueOf(),
+        //     guildId: guildId,
+        //     channelId: channelId,
+        //     content: content[i],
+        //   }).save();
+        // }
+        console.log(`HERE IS THE CURRENT DAY: ${currentDay}`);
+        if (currentDay != results.day) {
+
+          currentDay = momentTimezone.utc().add(1, 'day').format('dddd');
+          console.log(`HERE IS THE NEW CURRENT DAY: ${currentDay}`);
+
         }
+
       }
 
   }
