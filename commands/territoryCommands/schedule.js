@@ -125,7 +125,7 @@ module.exports = {
         //   }).save();
         // }
         console.log(`HERE IS THE CURRENT DAY: ${currentDay}`);
-        if (currentDay != results.day) {
+        while (currentDay != results.day) {
 
           currentDay = momentTimezone.utc().add(1, 'day').format('dddd');
           console.log(`HERE IS THE NEW CURRENT DAY: ${currentDay}`);
