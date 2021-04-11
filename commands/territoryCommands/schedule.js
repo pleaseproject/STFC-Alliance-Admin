@@ -156,22 +156,16 @@ module.exports = {
           }).save(function (err, res) {
             if (err) {
               console.log(`HERE IS THE SCHEDULING ERROR: ${err}`);
-              success = false;
               return;
-            } else {
-              success = true;
             }
           });
         }
-        if (success) {
-          message.channel.send(
-            `Two reminders created for \`\`${results.system}\`\`.`
-          );
-        } else {
-          message.channel.send(
-            `There was an error in scheduling these reminders! Please reach out to the Admin!`
-          );
-        }
+        message.channel.send(
+          `Two reminders created for \`\`${results.system}\`\`.`
+        );
+        // message.channel.send(
+        //   `There was an error in scheduling these reminders! Please reach out to the Admin!`
+        // );
       }
     }
   },
