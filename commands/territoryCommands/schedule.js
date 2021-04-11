@@ -148,9 +148,6 @@ module.exports = {
             content: content[i],
           }).save(function (err, res) {
             if (err) {
-              message.channel.send(
-                `There was an error in scheduling these reminders! Please reach out to the Admin!`
-              );
               console.log(`HERE IS THE SCHEDULING ERROR: ${err}`);
               success = false;
               return;
@@ -160,6 +157,10 @@ module.exports = {
         }
         if (success) {
           message.channel.send(`Two reminders created for \`\`${results.system}\`\`.`);
+        } else {
+          message.channel.send(
+            `There was an error in scheduling these reminders! Please reach out to the Admin!`
+          );
         }
       }
     }
