@@ -50,9 +50,10 @@ module.exports = {
     let content = [];
     let questions = ["What is the territory name?"];
     let arr = [];
+    let test = message.mentions.channels.first();
 
     let filter = (m) => m.author.id === message.author.id;
-    console.log(`HERE IS THE FIRST MENTION: ${message.mentions.channels.first()}`);
+    console.log(`HERE IS THE FIRST MENTION: ${test}`);
     console.log(`HERE IS THE FIRST ARGS: ${args[0]}`);
     // if (args[0] != message.mentions.channels.first()) {
     //   message.channel.send(`Please make sure you #channel-name.`);
