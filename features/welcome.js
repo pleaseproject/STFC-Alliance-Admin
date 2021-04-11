@@ -1,45 +1,45 @@
-const Canvas = require('canvas')
-const { MessageAttachment } = require('discord.js')
-const path = require('path')
-const { getChannelId } = require('../commands/misc/setwelcome')
+const Canvas = require("canvas");
+const { MessageAttachment } = require("discord.js");
+const path = require("path");
+const { getChannelId } = require("../commands/misc/setwelcome");
 
 module.exports = (client) => {
-  client.on('guildMemberAdd', async (member) => {
-    const { guild } = member
+  client.on("guildMemberAdd", async (member) => {
+    const { guild } = member;
 
-    const channelId = getChannelId(guild.id)
+    const channelId = getChannelId(guild.id);
     if (!channelId) {
-      return
+      return;
     }
 
-    const channel = guild.channels.cache.get(channelId)
+    const channel = guild.channels.cache.get(channelId);
     if (!channel) {
-      return
+      return;
     }
 
-    const canvas = Canvas.createCanvas(650, 365)
-    const ctx = canvas.getContext('2d')
+    const canvas = Canvas.createCanvas(650, 365);
+    const ctx = canvas.getContext("2d");
 
     const background = await Canvas.loadImage(
-      path.join(__dirname, '../startrekcanvas.png')
-    )
-    let x = 0
-    let y = 0
+      path.join(__dirname, "../startrekcanvas.png")
+    );
+    let x = 0;
+    let y = 0;
     //ctx.drawImage(background, x, y)
 
     const pfp = await Canvas.loadImage(
       member.user.displayAvatarURL({
-        format: 'png',
+        format: "png",
       })
-    )
-    x = 60
-    y = 25
+    );
+    x = 60;
+    y = 25;
     // Pick up the pen
-	ctx.beginPath();
-	ctx.arc(160 * .5, 125 * .5, 100 * .5, 0, Math.PI * 2, true);
-	ctx.closePath();
-	ctx.clip();
-    ctx.drawImage(pfp, x, y, 200 * .5, 200 * .5);
+    ctx.beginPath();
+    ctx.arc(160 * 0.5, 125 * 0.5, 100 * 0.5, 0, Math.PI * 2, true);
+    ctx.closePath();
+    ctx.clip();
+    ctx.drawImage(pfp, x, y, 200 * 0.5, 200 * 0.5);
 
     // ctx.fillStyle = '#ffffff'
     // ctx.font = '35px sans-serif'
@@ -52,7 +52,7 @@ module.exports = (client) => {
     // x = canvas.width / 2 - ctx.measureText(text).width / 2
     // ctx.fillText(text, x, 100 + pfp.height)
 
-    const attachment = new MessageAttachment(canvas.toBuffer())
-    channel.send('Welcome To The Server!', attachment)
-  })
-}
+    const attachment = new MessageAttachment(canvas.toBuffer());
+    channel.send("Welcome To The Server!", attachment);
+  });
+};

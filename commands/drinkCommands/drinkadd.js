@@ -1,36 +1,33 @@
-const drinkSchema = require('../../schemas/drinkSchema.js');
+const drinkSchema = require("../../schemas/drinkSchema.js");
 
 module.exports = {
+  category: "Drink",
+  name: "drinkadd",
+  aliases: ["adrink", "drinka", "adddrink"],
+  description: "Adds new drink to the database",
+  minArgs: 1,
+  maxArgs: 1,
+  expectedArgs: "<:Drink Emoji:>",
 
-    category: 'Drink',
-    name: 'drinkadd',
-    aliases: ['adrink', 'drinka', 'adddrink', ],
-    description: 'Adds new drink to the database',
-    minArgs: 1,
-    maxArgs: 1,
-    expectedArgs: "<:Drink Emoji:>",
+  run: async ({ message, args }) => {
+    const id = message.guild.id;
+    const drink = args.join(" ");
 
-    run: async ({ message, args }) => {
+    await drinkSchema.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        _id: id,
+        $push: {
+          drink: drink,
+        },
+      },
+      {
+        upsert: true,
+      }
+    );
 
-        const id = message.guild.id;
-        const drink = args.join(' ');
-
-        await drinkSchema.findOneAndUpdate({
-            _id: id,
-        }, {
-
-            _id: id,
-            $push: {
-
-                drink: drink
-
-            }
-        }, {
-            upsert: true,
-        })
-
-        message.reply(`${drink} has been added to the database!`);
-
-    }
-
-}
+    message.reply(`${drink} has been added to the database!`);
+  },
+};
