@@ -50,16 +50,15 @@ module.exports = {
     let content = [];
     let questions = ["What is the territory name?"];
     let arr = [];
+    
     let mentionTest = message.mentions.channels.first();
+    if (mentionTest === null) {
+      message.channel.send(`Please make sure you #channel-name.`);
+      return;
+    }
 
     let filter = (m) => m.author.id === message.author.id;
     channelId = args[0];
-    console.log(`HERE IS CHANNELID AND MENTIONTEST: channelId = ${channelId} mentionTest = ${mentionTest}`)
-    console.log(`TYPES: channelId = ${typeof channelId} mentionTest = ${typeof mentionTest}`)
-    if (channelId != mentionTest) {
-      message.channel.send(`Please make sure you #channel-name.`);
-      return;
-    } 
     channelId = channelId.substring(
       channelId.lastIndexOf("#") + 1,
       channelId.lastIndexOf(">")
