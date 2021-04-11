@@ -97,7 +97,7 @@ module.exports = {
           if (doc === null) {
             message.reply(
               `There is not a System stored called \`\`${system}\`\`! Please run the \`\`${prefix}schedule\`\` command again!`
-            );    
+            );
             flagNoSystem = true;
           } else {
             flagNoSystem = false;
@@ -140,24 +140,26 @@ module.exports = {
         }
 
         for (var i = 0; i < timeArr.length; i++) {
-          // await new scheduledSchema({
-          //   date: timeArr[i].valueOf(),
-          //   guildId: guildId,
-          //   channelId: channelId,
-          //   content: content[i],
-          // }).save();
+          await new scheduledSchema({
+            date: timeArr[i].valueOf(),
+            guildId: guildId,
+            channelId: channelId,
+            content: content[i],
+          }).save(function (err, res) {
+            console.log(`HERE IS THE RES: ${res}`);
+          });
 
-          await scheduledSchema.insertOne(
-            {
-              date: timeArr[i].valueOf(),
-              guildId: guildId,
-              channelId: channelId,
-              content: content[i],
-            },
-            function (err, res) {
-              console.log(`HERE IS THE RES: ${res}`);
-            }
-          );
+          // await scheduledSchema.insertOne(
+          //   {
+          //     date: timeArr[i].valueOf(),
+          //     guildId: guildId,
+          //     channelId: channelId,
+          //     content: content[i],
+          //   },
+          //   function (err, res) {
+          //     console.log(`HERE IS THE RES: ${res}`);
+          //   }
+          // );
         }
       }
     }
