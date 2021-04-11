@@ -53,7 +53,7 @@ module.exports = {
 
     let mentionTest = message.mentions.channels.first();
     console.log(`Here's mentionTest: ${mentionTest}`)
-    if (mentionTest == 'undefined') {
+    if (mentionTest == null) {
       message.channel.send(`Please make sure you #channel-name.`);
       return;
     }
