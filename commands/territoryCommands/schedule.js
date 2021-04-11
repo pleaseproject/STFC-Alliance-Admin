@@ -151,8 +151,9 @@ module.exports = {
               console.log(`HERE IS THE SCHEDULING ERROR: ${err}`);
               success = false;
               return;
+            } else {
+              success = true;
             }
-            success = true;
           });
         }
         if (success) {
