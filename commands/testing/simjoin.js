@@ -1,5 +1,5 @@
 module.exports = {
-
+    testOnly: true, // Will now only work on test servers
     name: 'simjoin',
     description: 'Tests welcome message',
     requiredPermissions: ['ADMINISTRATOR'],

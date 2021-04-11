@@ -1,5 +1,5 @@
 module.exports = {
-
+    testOnly: true, // Will now only work on test servers
     name: 'simleave',
     description: 'Tests',
     requiredPermissions: ['ADMINISTRATOR'],

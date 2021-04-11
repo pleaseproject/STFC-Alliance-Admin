@@ -2,7 +2,7 @@ const allianceSchema = require('../../schemas/allianceSchema');
 const Discord = require('discord.js');
 
 module.exports = {
-
+    testOnly: true, // Will now only work on test servers
     name: 'pt',
     description: 'Tests Pagination Embed Message',
     requiredPermissions: ['ADMINISTRATOR'],
