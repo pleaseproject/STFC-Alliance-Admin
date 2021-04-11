@@ -50,9 +50,9 @@ module.exports = {
     let content = [];
     let questions = ["What is the territory name?"];
     let arr = [];
-    
+
     let mentionTest = message.mentions.channels.first();
-    if (mentionTest === null) {
+    if (mentionTest == 'undefined') {
       message.channel.send(`Please make sure you #channel-name.`);
       return;
     }
@@ -163,7 +163,9 @@ module.exports = {
           });
         }
         if (success) {
-          message.channel.send(`Two reminders created for \`\`${results.system}\`\`.`);
+          message.channel.send(
+            `Two reminders created for \`\`${results.system}\`\`.`
+          );
         } else {
           message.channel.send(
             `There was an error in scheduling these reminders! Please reach out to the Admin!`
