@@ -53,11 +53,12 @@ module.exports = {
     let mentionTest = message.mentions.channels.first();
 
     let filter = (m) => m.author.id === message.author.id;
-    if (args[0] != mentionTest) {
+    channelId = args[0];
+    console.log(`HERE IS CHANNELID AND MENTIONTEST: channelId = ${channelId} mentionTest = ${mentionTest}`)
+    if (channelId != mentionTest) {
       message.channel.send(`Please make sure you #channel-name.`);
       return;
     } 
-    channelId = args[0];
     channelId = channelId.substring(
       channelId.lastIndexOf("#") + 1,
       channelId.lastIndexOf(">")
