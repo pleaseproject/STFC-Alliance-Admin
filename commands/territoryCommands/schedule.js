@@ -52,7 +52,12 @@ module.exports = {
     let arr = [];
 
     let filter = (m) => m.author.id === message.author.id;
-    if (args[0] != message.mentions.channels.first()) return;
+    console.log(`HERE IS THE FIRST MENTION: ${message.mentions.channels.first()}`);
+    console.log(`HERE IS THE FIRST ARGS: ${args[0]}`);
+    // if (args[0] != message.mentions.channels.first()) {
+    //   message.channel.send(`Please make sure you #channel-name.`);
+    //   return;
+    // } 
     channelId = args[0];
     channelId = channelId.substring(
       channelId.lastIndexOf("#") + 1,
