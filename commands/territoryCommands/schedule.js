@@ -86,6 +86,7 @@ module.exports = {
 
     async function StoreData() {
       let flagNoSystem;
+      let success;
       let currentDay = momentTimezone.utc().format("dddd");
       let tempSystem = arr[0].toLowerCase();
       let system = tempSystem.charAt(0).toUpperCase() + tempSystem.slice(1);
@@ -151,14 +152,14 @@ module.exports = {
                 `There was an error in scheduling these reminders! Please reach out to the Admin!`
               );
               console.log(`HERE IS THE SCHEDULING ERROR: ${err}`);
+              success = false;
               return;
             }
-            message.channel.send(
-              `Reminder ${i + 1} created for \`\`${
-                results.system
-              }\`\`to be sent at \`\`${timeArr[i]}`
-            );
+            success = true;
           });
+        }
+        if (success) {
+          message.channel.send(`Two reminders created for \`\`${results.system}\`\`.`);
         }
       }
     }
