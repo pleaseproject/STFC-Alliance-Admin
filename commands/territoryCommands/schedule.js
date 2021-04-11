@@ -52,6 +52,7 @@ module.exports = {
     let arr = [];
 
     let filter = (m) => m.author.id === message.author.id;
+    if (args[0] != message.mentions.channels.first()) return;
     channelId = args[0];
     channelId = channelId.substring(
       channelId.lastIndexOf("#") + 1,
