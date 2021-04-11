@@ -48,7 +48,6 @@ module.exports = {
     const guildId = message.guild.id;
     let channelId;
     let content = [];
-    let flagNoSystem;
     let questions = ["What is the territory name?"];
     let arr = [];
 
@@ -86,6 +85,7 @@ module.exports = {
     }
 
     async function StoreData() {
+      let flagNoSystem;
       let currentDay = momentTimezone.utc().format("dddd");
       let tempSystem = arr[0].toLowerCase();
       let system = tempSystem.charAt(0).toUpperCase() + tempSystem.slice(1);
@@ -95,6 +95,9 @@ module.exports = {
         },
         function (err, doc) {
           if (doc === null) {
+            message.reply(
+              `There is not a System stored called \`\`${system}\`\`! Please run the \`\`${prefix}schedule\`\` command again!`
+            );    
             flagNoSystem = true;
           } else {
             flagNoSystem = false;
@@ -103,7 +106,6 @@ module.exports = {
       );
 
       if (!flagNoSystem) {
-        console.log(`HERE IS THE SYSTEM: ${system}`);
         content[0] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in **1 Hour**. 30 Minutes before please hold off on armadas and prepare to send ships. This event will last \`\`${results.duration} Minutes\`\`.`;
         content[1] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in **30 Minutes**. Please hold off on armadas and begin sending ships. This event will last \`\`${results.duration} Minutes\`\`.`;
         const currentDate = momentTimezone.utc().format("YYYY/MM/DD");
@@ -157,10 +159,6 @@ module.exports = {
             }
           );
         }
-      } else {
-        message.reply(
-          `There is not a System stored called \`\`${system}\`\`! Please run the \`\`${prefix}schedule\`\` command again!`
-        );
       }
     }
   },
