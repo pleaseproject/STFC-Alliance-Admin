@@ -55,7 +55,8 @@ module.exports = {
     let filter = (m) => m.author.id === message.author.id;
     channelId = args[0];
     console.log(`HERE IS CHANNELID AND MENTIONTEST: channelId = ${channelId} mentionTest = ${mentionTest}`)
-    if (channelId.toString() != mentionTest.toString()) {
+    console.log(`TYPES: channelId = ${typeof channelId} mentionTest = ${typeof mentionTest}`)
+    if (channelId != mentionTest) {
       message.channel.send(`Please make sure you #channel-name.`);
       return;
     } 
