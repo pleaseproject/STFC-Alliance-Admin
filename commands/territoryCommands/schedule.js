@@ -44,7 +44,7 @@ module.exports = {
         checkForPosts()
     },
 
-    run: async ({ message, args }) => {
+    run: async ({ message, args, prefix }) => {
 
       const guildId = message.guild.id;
       let channelId;
@@ -95,7 +95,12 @@ module.exports = {
         let system = tempSystem.charAt(0).toUpperCase() + tempSystem.slice(1);
         const results = await territorySchema.findOne({
           system
-        });
+        }, function(err,doc) {
+          if (doc === null) {
+              message.reply(`There is not a System stored called \`\`${system}\`\`! Please make sure that you have spelt it correctly!`);
+              return
+          }
+      });
         console.log(`HERE IS THE SYSTEM: ${system}`);
         content[0] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in 1 Hour. 30 Minutes before please hold off on armadas and prepare to send ships. This event will last \`\`${results.duration} Minutes\`\`.`;
         content[1] = `@everyone We have a territory event in the System: \`\`${results.system}\`\` in 30 Minutes. Please hold off on armadas and begin sending ships. This event will last \`\`${results.duration} Minutes\`\`.`;
@@ -124,17 +129,24 @@ module.exports = {
             'YYYY-MM-DD HH:mm A'
           ).subtract(30, 'minutes').add(1, 'day'));
         }
-        
-        console.log(timeArr);
         for (var i = 0; i < timeArr.length; i++) {
-          await new scheduledSchema({
+          // await new scheduledSchema({
+          //   date: timeArr[i].valueOf(),
+          //   guildId: guildId,
+          //   channelId: channelId,
+          //   content: content[i],
+          // }).save();
+
+          await scheduledSchema.insertOne({
             date: timeArr[i].valueOf(),
             guildId: guildId,
             channelId: channelId,
             content: content[i],
-          }).save();
+          }, function (err, res) {
+            console.log(`HERE IS THE RES: ${res}`);
+          });
+
         }
-        console.log(`HERE IS THE CURRENT DAY: ${currentDay}`);
 
       }
 
