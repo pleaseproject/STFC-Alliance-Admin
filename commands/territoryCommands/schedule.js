@@ -146,20 +146,19 @@ module.exports = {
             channelId: channelId,
             content: content[i],
           }).save(function (err, res) {
-            console.log(`HERE IS THE RES: ${res}`);
+            if (err) {
+              message.channel.send(
+                `There was an error in scheduling these reminders! Please reach out to the Admin!`
+              );
+              console.log(`HERE IS THE SCHEDULING ERROR: ${err}`);
+              return;
+            }
+            message.channel.send(
+              `Reminder ${i + 1} created for \`\`${
+                results.system
+              }\`\`to be sent at \`\`${timeArr[i]}`
+            );
           });
-
-          // await scheduledSchema.insertOne(
-          //   {
-          //     date: timeArr[i].valueOf(),
-          //     guildId: guildId,
-          //     channelId: channelId,
-          //     content: content[i],
-          //   },
-          //   function (err, res) {
-          //     console.log(`HERE IS THE RES: ${res}`);
-          //   }
-          // );
         }
       }
     }
