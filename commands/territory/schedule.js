@@ -140,13 +140,11 @@ module.exports = {
             momentTimezone
               .utc(`${currentDate} ${results.milTimeUTC}`, "YYYY-MM-DD HH:mm A")
               .subtract(1, "hour")
-              .add(1, "day")
           );
           timeArr.push(
             momentTimezone
               .utc(`${currentDate} ${results.milTimeUTC}`, "YYYY-MM-DD HH:mm A")
               .subtract(30, "minutes")
-              .add(1, "day")
           );
           console.log(`THE DAYS MATCHED`);
         }

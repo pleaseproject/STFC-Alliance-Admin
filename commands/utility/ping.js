@@ -11,5 +11,5 @@ module.exports = {
     run: ({ message }) => {
       message.reply(`pong`);
     },
-  };
+};
   
