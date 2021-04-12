@@ -119,6 +119,8 @@ module.exports = {
         const currentDate = momentTimezone.utc().format("YYYY/MM/DD");
         let timeArr = [];
 
+        console.log(`HERE IS THE CURRENT DAY: ${currentDay}`);
+        console.log(`HERE IS THE DAY FROM RESULTS: ${results.day}`);
         if (currentDay != results.day) {
           timeArr.push(
             momentTimezone
@@ -132,6 +134,7 @@ module.exports = {
               .subtract(30, "minutes")
               .add(1, "day")
           );
+          console.log(`THE DAYS DID NOT MATCH`);
         } else {
           timeArr.push(
             momentTimezone
@@ -145,6 +148,7 @@ module.exports = {
               .subtract(30, "minutes")
               .add(1, "day")
           );
+          console.log(`THE DAYS MATCHED`);
         }
 
         for (var i = 0; i < timeArr.length; i++) {
