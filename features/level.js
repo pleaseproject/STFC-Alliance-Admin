@@ -7,6 +7,10 @@ module.exports = (client) => {
     let channel = message.channel.id;
     let guildID = message.guild.id;
     let memberID = message.member.id;
+    if (memberID = null) {
+      console.log(`The Member ID could not be found. Exiting XP gain!`);
+      return;
+    }
     if (message.author.bot) return; // Ignores bot messages
     // XP Channel Ignore Checker
     xpignoreSchema.findOne(
