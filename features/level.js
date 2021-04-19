@@ -7,7 +7,7 @@ module.exports = (client) => {
     let channel = message.channel.id;
     let guildID = message.guild.id;
     let memberID = message.member.id;
-    if (memberID = null) {
+    if (memberID === null) {
       console.log(`The Member ID could not be found. Exiting XP gain!`);
       return;
     }
