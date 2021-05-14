@@ -93,13 +93,12 @@ module.exports = {
 
     async function StoreData() {
       let flagNoSystem;
-      let success;
       let currentDay = momentTimezone.utc().format("dddd");
       let tempSystem = arr[0].toLowerCase();
       let system = tempSystem.charAt(0).toUpperCase() + tempSystem.slice(1);
       const results = await territorySchema.findOne(
         {
-          system,
+          system: system.toLowerCase(),
         },
         function (err, doc) {
           if (doc === null) {
