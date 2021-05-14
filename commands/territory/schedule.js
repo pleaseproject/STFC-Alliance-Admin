@@ -98,7 +98,10 @@ module.exports = {
       let system = tempSystem.charAt(0).toUpperCase() + tempSystem.slice(1);
       const results = await territorySchema.findOne(
         {
-          system: system.toLowerCase(),
+          system:
+          {
+            $regex: new RegExp("^" + system.toLowerCase(), "i"),
+          }
         },
         function (err, doc) {
           if (doc === null) {
