@@ -40,6 +40,8 @@ module.exports = (client) => {
       member.roles.add(guild.roles.cache.get(roleId));
       if (!user.bot) {
         reaction.users.remove(user);
+      } else {
+        console.log(`Attempted to remove bots reaction. Stopping!`);
       }
       console.log(`Assigning Role { ${roleId} } to { ${member} }`);
     }
